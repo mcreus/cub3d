@@ -3,50 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcreus <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 12:36:13 by mcreus            #+#    #+#             */
-/*   Updated: 2023/04/27 12:36:15 by mcreus           ###   ########.fr       */
+/*   Created: 2023/02/06 14:42:01 by aperrein          #+#    #+#             */
+/*   Updated: 2023/02/06 17:49:46 by aperrein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*This function searches for the first occurrence of a 
-character ch in the n bytes
-of characters in the block of memory pointed by str.
-It returns a pointer to the matching byte if the searched byte was 
-found, otherwise, a NULL pointer is returned.*/
 
 #include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t			i;
-	unsigned char	*str;
-	unsigned char	character;
+	unsigned char	*temp;
 
-	str = (unsigned char *)s;
-	character = (unsigned char)c;
 	i = 0;
+	temp = (unsigned char *)s;
 	while (i < n)
 	{
-		if (*str == character)
-		{
-			return (str);
-		}
-		str++;
+		if (temp[i] == (unsigned char)c)
+			return ((void *)(temp + i));
 		i++;
 	}
 	return (NULL);
 }
-
-/*int main () {
-   const char str[] = "http://www.tutorialspoint.com";
-   const char ch = '.';
-   char *res;
-
-   res = ft_memchr(str, ch, 25);
-
-   printf("String after |%c| is - %s\n", ch, res);
-
-   return(0);
-}*/

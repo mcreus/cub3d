@@ -3,49 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcreus <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 12:45:16 by mcreus            #+#    #+#             */
-/*   Updated: 2023/04/27 12:45:17 by mcreus           ###   ########.fr       */
+/*   Created: 2023/02/08 13:16:18 by aperrein          #+#    #+#             */
+/*   Updated: 2023/02/09 16:36:31 by aperrein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Allocates (with malloc(3)) and returns a copy of
-’s1’ with the characters specified in ’set’ removed
-from the beginning and the end of the string 
-strtrim removes all whitespace characters from the 
-beginning and the end of a string. In other words,
- it will remove all the unnecessary white
- that you might have in a string*/
-
 #include "libft.h"
 
-char	*ft_strtrim(char const *str, char const *set)
+static int	check(char c, char const *set)
 {
-	char	*result;
-	int		start;
-	int		end;
+	int	i;
 
-	start = 0;
-	if (!str)
-		return (0);
-	end = ft_strlen((char *)str);
-	while (str[start] && ft_strchr((char *)set, str[start]))
-		start++;
-	while (end > start && ft_strchr((char *)set, str[end - 1]))
-		end--;
-	result = ft_substr(str, start, (end - start));
-	return (result);
+	i = 0;
+	while (set[i])
+	{
+		if (c == set[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-/*#include <stdio.h>
-
-int main()
+char	*ft_strtrim(char const *s1, char const *set)
 {
-    char a[] = "  aabcdefgg  ";
-    char s[] = "ag ";
-    char *str;
-    str = ft_strtrim(a, s);
-    printf("|%s|\n", str);
-    return 0;
-}*/
+	char	*res;
+	int		start;
+	int		i;
+	int		fin;
+
+	fin = ft_strlen(s1);
+	start = 0;
+	i = 0;
+	while (check(s1[start], set))
+		start++;
+	while (check(s1[fin - 1], set) && fin > start)
+			fin--;
+	res = malloc(((fin - start) + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	while (start < fin)
+		res[i++] = s1[start++];
+	res[i] = '\0';
+	return (res);
+}

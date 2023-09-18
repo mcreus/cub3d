@@ -3,29 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcreus <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 12:33:19 by mcreus            #+#    #+#             */
-/*   Updated: 2023/04/27 12:33:21 by mcreus           ###   ########.fr       */
+/*   Created: 2023/02/10 14:23:30 by aperrein          #+#    #+#             */
+/*   Updated: 2023/02/13 09:24:39 by aperrein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*lst: The address of a pointer to the first link of
-a list.
-new: The address of a pointer to the node to be
-added to the list.
-Adds the node ’new’ at the end of the list*/
 
 #include "libft.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (*lst == NULL)
+	t_list	*last;
+
+	if (*lst)
 	{
-		*lst = new;
-		return ;
+		last = ft_lstlast(*lst);
+		last->next = new;
 	}
-	if (new == NULL)
-		return ;
-	ft_lstlast (*lst)-> next = new;
+	else
+		*lst = new;
 }

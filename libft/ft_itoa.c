@@ -3,101 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcreus <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 12:32:58 by mcreus            #+#    #+#             */
-/*   Updated: 2023/04/27 12:33:02 by mcreus           ###   ########.fr       */
+/*   Created: 2023/02/09 12:14:02 by aperrein          #+#    #+#             */
+/*   Updated: 2023/02/09 13:26:58 by aperrein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
- SYNOPSIS: split string, with specified character as delimiter, into an array
-of strings
-** DESCRIPTION:
-** 		Allocates (with malloc(3)) and returns an array of strings obtained by
-**	splitting ’s’ using the character ’c’ as a delimiter. The array must be
-**	ended by a NULL pointer.
-*/
 #include "libft.h"
 
-static char	*posnum(char *str, int n, int len)
+static int	taille(int n)
 {
-	long	x;
+	int	r;
 
-	len--;
-	x = n;
-	while (len >= 0)
+	r = 1;
+	if (n == -2147483648)
+		return (11);
+	if (n < 0)
 	{
-		str[len] = x % 10 + '0';
-		x = x / 10;
-		len--;
+		n = -n;
+		r = 2;
 	}
-	return (str);
+	while (n >= 10)
+	{
+		n = n / 10;
+		r++;
+	}
+	return (r);
 }
 
-static char	*negnum(char *str, int n, int len)
+static void	rempli(int n, char *res, int pos)
 {
-	long	x;
-
-	x = n;
-	str[0] = '-';
-	len--;
-	x = x * (-1);
-	while (len > 0)
+	if (n > 9)
 	{
-		str[len] = (x % 10) + '0';
-		x = x / 10;
-		len--;
+		rempli(n / 10, res, pos - 1);
+		res[pos] = (n % 10) + '0';
 	}
-	return (str);
-}
-
-static int	int_len(int n)
-{
-	int		i;
-	long	x;
-
-	x = n;
-	i = 0;
-	if (x <= 0)
-	{
-		x = x *(-1);
-		i++;
-	}
-	while (x > 0)
-	{
-		x = x / 10;
-		i++;
-	}
-	return (i);
+	else
+		res[pos] = (n % 10) + '0';
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		len;
+	char	*res;
+	int		t;
 
-	len = int_len(n);
-	str = (char *) malloc (sizeof (char) * len + 1);
-	if (!str)
+	t = taille(n);
+	res = malloc((t + 1) * sizeof (char));
+	if (!res)
 		return (NULL);
-	str[len] = '\0';
-	if (n < 0)
+	if (n == -2147483648)
 	{
-		str = negnum(str, n, len);
+		res[0] = '-';
+		res[1] = '2';
+		n = 147483648;
 	}
-	else if (n == 0)
-		str[0] = '0';
-	else
-		str = posnum(str, n, len);
-	return (str);
+	else if (n < 0)
+	{
+		res[0] = '-';
+		n = -n;
+	}
+	rempli(n, res, t - 1);
+	res[t] = 0;
+	return (res);
 }
-
-/*#include <stdio.h>
- int main()
-{
-	char *b;
-	b = ft_itoa(-2147483648);
-	printf("%s\n", b);
-	return 0;
-} */

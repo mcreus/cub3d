@@ -3,53 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcreus <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 12:45:36 by mcreus            #+#    #+#             */
-/*   Updated: 2023/04/27 12:45:37 by mcreus           ###   ########.fr       */
+/*   Created: 2023/02/08 09:04:50 by aperrein          #+#    #+#             */
+/*   Updated: 2023/02/09 16:19:28 by aperrein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*Allocates (with malloc(3)) and returns a substring
-from the string ’s’.
-The substring begins at index ’start’ and is of
-maximum size ’len’*/
 
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
-	size_t	a;
+	char	*res;
+	size_t	i;
+	size_t	len_s;
+	size_t	len_r;
 
-	a = 0;
-	if (!s)
+	len_s = ft_strlen(s);
+	len_r = 0;
+	if (start > len_s)
+		len_r = 0;
+	else if (start + len >= len_s)
+		len_r = len_s - start;
+	else
+		len_r = len;
+	i = 0;
+	res = (char *)malloc((len_r + 1) * sizeof (*s));
+	if (!res)
 		return (NULL);
-	if (start >= ft_strlen(s))
+	while (i < len && start < len_s)
 	{
-		str = (char *)malloc(sizeof(char) * 1);
-		if (!str)
-			return (NULL);
-		str[a] = 0;
-		return (str);
+		res[i] = s[start];
+		i++;
+		start++;
 	}
-	str = (char *)malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (NULL);
-	while (a < len)
-	{
-		str[a] = s[start + a];
-		a++;
-	}
-		str[a] = '\0';
-	return (str);
+	res[i] = 0;
+	return (res);
 }
-
-/*int main()
-{
-  char c[] = "183-55-4899-1368-445";
-  char *str;
-  str = ft_substr(c, 7, 4);
-  printf("%s\n", str);
-  return 0;
-}*/

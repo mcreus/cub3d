@@ -3,46 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcreus <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 12:45:02 by mcreus            #+#    #+#             */
-/*   Updated: 2023/04/27 12:45:04 by mcreus           ###   ########.fr       */
+/*   Created: 2023/02/06 13:13:47 by aperrein          #+#    #+#             */
+/*   Updated: 2023/02/09 15:19:39 by aperrein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*The strrchr() function returns a pointer 
-to the L A S T occurrence of the character c in the string s. 
-  The strchr() and strrchr() functions return a pointer to the
-       matched character or NULL if the character is not found.  The
-       terminating null byte is considered part of the string, so that
-       if c is specified as '\0', these functions return a pointer to
-       the terminator.
-*/
 
 #include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
+	int	a;
 
-	i = ft_strlen(s);
-	if (c == '\0')
-		return ((char *)(s + i));
-	while (i >= 0)
+	i = 0;
+	a = -1;
+	while (s[i])
 	{
-		if (s[i] == c)
-			return ((char *)(s + i));
-		i--;
+		if (s[i] == (char)c)
+			a = i;
+		i++;
 	}
+	if ((char)c == 0)
+		return ((char *)(s + i));
+	else if (a >= 0)
+		return ((char *)(s + a));
 	return (NULL);
-}
-
-/*#include <stdio.h>
-int	main()
-{
-	char *str = "aacaaacaaaaaaaa";
-	char c = 'c';
-	char *a = ft_strrchr(str, c);
-	printf("Conteúdo da memória: %c\n", *a);
-	return 0;
-}*/
+}	

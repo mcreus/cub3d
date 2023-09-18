@@ -3,63 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcreus <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 12:38:49 by mcreus            #+#    #+#             */
-/*   Updated: 2023/04/27 12:38:51 by mcreus           ###   ########.fr       */
+/*   Created: 2023/02/16 14:56:05 by aperrein          #+#    #+#             */
+/*   Updated: 2023/02/23 15:02:53 by aperrein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	print_and_count(va_list args, char character)
+int	print_c(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+static int	print_s(char *s)
 {
 	int	i;
 
 	i = 0;
-	if (character == 'c')
-		i = ft_print_char(va_arg(args, int));
-	else if (character == 's')
-		i = ft_print_str(va_arg(args, char *));
-	else if (character == 'i' || character == 'd')
-		i = ft_print_num(va_arg(args, int));
-	else if (character == 'u')
-		i = ft_print_unsigned_int(va_arg(args, unsigned int));
-	else if (character == 'x')
-		i = ft_print_lower_hexa(va_arg(args, unsigned int));
-	else if (character == 'X')
-		i = ft_print_upper_hexa(va_arg(args, unsigned int));
-	else if (character == '%')
-		i = ft_print_char('%');
-	else if (character == 'p')
-		i = ft_address(va_arg(args, unsigned long));
-	else
-		return (0);
+	if (!s)
+		return (write(1, "(null)", 6));
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
 	return (i);
+}
+
+static int	check_conv(char c, va_list ap, int *i, char p)
+{
+	if (c == 'c')
+		return (print_c(va_arg(ap, int)));
+	if (c == 's')
+		return (print_s(va_arg(ap, char *)));
+	if (c == 'd' || c == 'i')
+		return (print_d(va_arg(ap, int)));
+	if (c == 'u' || c == 'x' || c == 'X')
+		return (print_x(va_arg(ap, unsigned int), c));
+	if (c == '%')
+		return (print_c(c));
+	if (c == 'p')
+		return (print_p(va_arg(ap, unsigned long long), 1));
+	else
+	{
+		*i = *i - 1;
+		return (print_c(p));
+	}
 }
 
 int	ft_printf(const char *str, ...)
 {
-	va_list	args;
-	int		bytes_in_str;
+	int		nbrc;
 	int		i;
+	va_list	ap;
 
 	i = 0;
-	bytes_in_str = 0;
-	va_start (args, str);
+	nbrc = 0;
+	va_start(ap, str);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
-			bytes_in_str += print_and_count (args, str[i + 1]);
-			i += 2;
+			nbrc = nbrc + check_conv(str[i + 1], ap, &i, str[i]);
+			i++;
 		}
 		else
 		{
-			bytes_in_str += ft_print_char(str[i]);
-			i++;
+			write(1, &str[i], 1);
+			nbrc++;
 		}
+		i++;
 	}
-	va_end(args);
-	return (bytes_in_str);
+	va_end(ap);
+	return (nbrc);
 }

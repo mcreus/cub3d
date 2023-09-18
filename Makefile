@@ -1,45 +1,53 @@
-NAME	=	cub3D
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aperrein <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/18 15:02:00 by aperrein          #+#    #+#              #
+#    Updated: 2023/09/18 15:02:02 by aperrein         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra
-MFLAGS	=	-lX11 -lXext
-RM		=	rm -rf
+NAME	=	cube3d
 
-LIBFT	=	./libft/libft.a
-MLX		=	./minilibx-linux/libmlx.a
+LIBFT = 	libft/libft.a
 
-SRCS	=	main.c
-OBJS	=	$(SRCS:%.c=%.o)
+L = 		libft/
 
-all: $(NAME)
+OBJ_DIR =	OBJ/
 
-$(LIBFT):
-	@echo "\033[0;33m\COMPILING LIBFT\n"
-	@$(MAKE) -C ./libft
-	@echo "\033[1;32m\LIBFT CREATED\n"
+SRC_DIR =	SRC/
 
-$(MLX):
-	@echo "\033[0;33m\COMPILING MLX\n"
-	@$(MAKE) -C ./minilibx-linux
-	@echo "\033[1;32m\MLX CREATED\n"
+SRC	=	main.c conf_init.c error_conf.c
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
-	@echo "\033[0;33m\nCOMPILING CUB3D.....\n"
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MFLAGS) -o $(NAME)
-	@echo "\033[1;32m./cub3D created\n"
+OBJ	=	$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
-clean:
-	@echo "\033[0;31mDELETING MLX files\nLIBFT files\nSO_long object...\n"
-	@$(MAKE) clean -C ./libft
-	@$(MAKE) clean -C ./minilibx-linux
-	@$(RM) $(OBJS)
-	@echo "033[1;32mDONE\n"
+RM	=	rm -f
 
-fclean: clean
-	@echo "\033[0;31mDELETING CUB3D EXECUTABLE...."
-	@$(MAKE) fclean -C ./libft
-	@$(MAKE) clean -C ./minilibx-linux
-	@$(RM) $(NAME)
-	@echo "\033[1;32mDONE\n"
+CFLAGS	=	-Wall -Werror -Wextra
 
-re: fclean all
+all     :       $(OBJ_DIR) $(NAME)
+	
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+		gcc $(CFLAGS) -g -c $< -o $@
+
+$(OBJ_DIR) :
+		mkdir $(OBJ_DIR)
+
+$(NAME)	:	$(OBJ) $(L)
+		make -s -C libft/
+		make -s -C minilibx
+		gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) minilibx/libmlx.a -lX11 -lXext
+
+clean	:
+		$(RM) $(OBJ)
+#		make clean -C libft/
+#		make clean -C minilibx/
+
+fclean	:	clean
+		$(RM) $(NAME)
+#		make fclean -C libft/
+
+re 	:	fclean all
