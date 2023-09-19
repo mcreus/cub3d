@@ -13,18 +13,6 @@
 
 #include "cub3d.h"
 
-int	cub_check(char *s)
-{
-	char	*ext;
-
-	ext = ft_strrchr(s, '.');
-	if (!ext)
-		return (0);
-	if (ft_strncmp(ext, ".cub", 5) != 0)
-		return (0);
-	return (1);
-}
-
 int	error(char *s)
 {
 	ft_printf("%s\n", s);

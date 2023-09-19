@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	cube3d
+NAME	=	cub3d
 
 LIBFT = 	libft/libft.a
 
@@ -20,7 +20,7 @@ OBJ_DIR =	OBJ/
 
 SRC_DIR =	SRC/
 
-SRC	=	main.c conf_init.c error_conf.c
+SRC	=	main.c conf_init.c conf_check.c error_conf.c utils.c
 
 OBJ	=	$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
