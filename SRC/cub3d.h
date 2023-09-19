@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/19 13:43:18 by aperrein         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:28:02 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,27 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
-# define Width 500
-# define Height 500
-# define mapWidth 30
-# define mapHeight 30
+# define width 500
+# define height 500
+# define mapWidth 50
+# define mapHeight 50
 
 typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
+	void	*north;
+	void	*south;
+	void	*east;
+	void	*west;
 	int		x;
 	int		y;
 	int		file_lenght;
 	int		configured;
 	int		conf_error;
+	int		fd;
+	int		lines;
+	int		columns;
 	char	**file;
 	char	**map;
 	char	*no_p;
