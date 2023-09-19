@@ -19,6 +19,11 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
+# define Width 500
+# define Height 500
+# define mapWidth 30
+# define mapHeight 30
+
 typedef struct s_data
 {
 	void	*mlx;
