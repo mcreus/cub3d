@@ -58,6 +58,7 @@ void	conf_fill(char *file, t_data *data)
 		data->file[i] = get_next_line(fd);
 		i++;
 	}
+	data->file[i] = 0;
 	close(fd);
 }
 

@@ -12,24 +12,18 @@
 
 #include "cub3d.h"
 
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 int	keysym(int key, void *param)
 {
-	ft_putchar('x');
+	ft_putchar_fd('x', 1);
 	(void)key;
 	(void)param;
 	return (0);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_data  data;
-	
+	t_data	data;
+
 	map_init(argc, argv, &data);
 	//data.mlx = mlx_init();
 	//data.win = mlx_new_window(data.mlx, 500, 500, "new project");

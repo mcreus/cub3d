@@ -6,7 +6,7 @@
 /*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:14:27 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/19 10:14:40 by aperrein         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:14:49 by aperrein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,28 @@ int	cub_check(char *s)
 	return (1);
 }
 
-int     empty_line(char *s)
+int	empty_line(char *s)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (s[i])
-    {
-        if (s[i] != ' ' && s[i] != '\n')
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != ' ' && s[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-void    free_tab(char **tab)
+void	free_tab(char **tab)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (!tab)
-        return ;
-    while (tab[i])
-        free(tab[i++]);
-    free(tab);
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
 }

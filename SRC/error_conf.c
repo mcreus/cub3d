@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "cub3d.h"
 
 int	error(char *s)
@@ -19,14 +18,28 @@ int	error(char *s)
 	return (0);
 }
 
+void	free_data(t_data *data)
+{
+	if (data->c_p)
+		free(data->c_p);
+	if (data->f_p)
+		free(data->f_p);
+	if (data->no_p)
+		free(data->no_p);
+	if (data->we_p)
+		free(data->we_p);
+	if (data->ea_p)
+		free(data->ea_p);
+	if (data->so_p)
+		free(data->so_p);
+	free_tab(data->file);
+	data->file = 0;
+	free_tab(data->map);
+	data->map = 0;
+}
+
 void	free_error(t_data *data, char *s)
 {
-	int	i;
-
-	i = 0;
-	while (i < data->file_lenght)
-		free(data->file[i++]);
-	free(data->file);
-	data->file = NULL;
+	free_data(data);
 	ft_printf("%s", s);
 }
