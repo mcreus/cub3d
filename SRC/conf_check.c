@@ -15,17 +15,17 @@
 void    select_identifier(t_data *data, char **line)
 {
     if (!ft_strncmp(line[0], "NO", 2))
-        data->no_p = ft_strdup(line[1]);
+        data->no_p = ft_strtrim(line[1], "\n");
     else if (!ft_strncmp(line[0], "SO", 2))
-        data->so_p = ft_strdup(line[1]);
+        data->so_p = ft_strtrim(line[1], "\n");
     else if (!ft_strncmp(line[0], "WE", 2))
-        data->we_p = ft_strdup(line[1]);
+        data->we_p = ft_strtrim(line[1], "\n");
     else if (!ft_strncmp(line[0], "EA", 2))
-        data->ea_p = ft_strdup(line[1]);
+        data->ea_p = ft_strtrim(line[1], "\n");
     else if (!ft_strncmp(line[0], "F", 1))
-        data->f_p = ft_strdup(line[1]);
+        data->f_p = ft_strtrim(line[1], "\n");
     else if (!ft_strncmp(line[0], "C", 1))
-        data->c_p = ft_strdup(line[1]);
+        data->c_p = ft_strtrim(line[1], "\n");
     else if (!data->configured)
         data->conf_error = 1;
 }
@@ -33,10 +33,13 @@ void    select_identifier(t_data *data, char **line)
 void    recup_element(t_data *data, char *s)
 {
     char    **line;
+    char    *tmp;
     int i;
 
     i = 0;
-    line = ft_split(s,' ');
+    tmp = ft_strtrim(s, "\n");
+    line = ft_split(tmp,' ');
+    free(tmp);
     while (line[i])
         i++;
     if (i != 2 && !data->configured)
@@ -76,11 +79,21 @@ int     element_check(t_data *data)
     return (0);
 }
 
+int    text_check(t_data *data)
+{
+    if (access(data->we_p, R_OK))
+		return (error("Wrong west texture"));
+    if (access(data->so_p, R_OK))
+		return (error("Wrong south texture"));
+    if (access(data->no_p, R_OK))
+		return (error("Wrong north texture"));
+    if (access(data->ea_p, R_OK))
+		return (error("Wrong east texture"));
+    return (1);
+}
+
 void    conf_check(t_data *data)
 {
-    data->conf_error = 0;
-    data->configured = 0;
-    data->map = 0;
     data->c_p = 0;
     data->f_p = 0;
     data->no_p = 0;
@@ -93,4 +106,8 @@ void    conf_check(t_data *data)
     data->lines = 0;
     data->columns = 0;
     element_check(data);
+    if (data->conf_error)
+        return ;
+    if (!text_check(data))
+        free_error(data, "");
 }
