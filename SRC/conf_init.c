@@ -77,6 +77,9 @@ void	conf_read(char *s, t_data *data)
 int	conf_init(int argc, char *argv[], t_data *data)
 {
 	data->file = 0;
+	data->conf_error = 0;
+	data->configured = 0;
+	data->map = 0;
 	if (!file_check(argc, argv[1]))
 		return (0);
 	conf_read(argv[1], data);
