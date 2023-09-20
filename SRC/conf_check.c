@@ -89,7 +89,6 @@ void    conf_check(t_data *data)
     data->ea_p = 0;
     data->x = 0;
     data->y = 0;
-    data->file_lenght = 0;
     data->fd = 0;
     data->lines = 0;
     data->columns = 0;

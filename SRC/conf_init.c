@@ -74,7 +74,7 @@ void	conf_read(char *s, t_data *data)
 		free_error(data, "Error\nThe file is empty\n");
 }
 
-int	map_init(int argc, char *argv[], t_data *data)
+int	conf_init(int argc, char *argv[], t_data *data)
 {
 	data->file = 0;
 	if (!file_check(argc, argv[1]))

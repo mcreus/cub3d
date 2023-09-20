@@ -50,7 +50,7 @@ typedef struct s_data
 	char	*c_p;
 }				t_data;
 
-int	map_init(int argc, char *argv[], t_data *data);
+int	conf_init(int argc, char *argv[], t_data *data);
 int	cub_check(char *s);
 int	empty_line(char *s);
 int	error(char *s);
