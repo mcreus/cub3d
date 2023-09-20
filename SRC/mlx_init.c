@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:45:12 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/20 12:36:53 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/20 12:56:25 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	img_init(t_data *data, char *av)
 		&data->x, &data->y);
 }
 
-void	draw_3d()
+/*void	draw_3d()
 {
 	int	r;
 	int	mx;
@@ -81,4 +81,4 @@ void	draw_3d()
 		my = (int) (ry) >> 6;
 		mp = my * mapX + mx;
 	}
-}
+}*/
