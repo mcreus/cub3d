@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:41:20 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/19 18:04:13 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/20 11:05:02 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,5 @@ void    conf_check(t_data *data)
     data->ea_p = 0;
     data->x = 0;
     data->y = 0;
-    data->fd = 0;
-    data->lines = 0;
-    data->columns = 0;
     element_check(data);
 }

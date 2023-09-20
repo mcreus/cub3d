@@ -6,33 +6,13 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:45:12 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/19 17:36:30 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/20 12:36:53 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <math.h>
 
-void	ft_map_index(t_data *data)
-{
-	int		i;
-	char	*str;
-
-	i = 0;
-	while (i <= data->lines)
-	{
-		str = get_next_line(data->fd);
-		if (!str)
-		{
-			free(str);
-			break ;
-		}
-		data->map[i] = ft_strtrim(str, "\n");
-		free(str);
-		i++;
-	}
-	data->columns = ft_strlen(data->map[0]);
-	
-}
 
 /*void	ft_put_window(t_data *data, int i, int j);
 {
@@ -42,7 +22,7 @@ void	ft_map_index(t_data *data)
 		while (data->map[i][j] != '\n' && data->map[i][j] != '\0')
 		{
 			if (data->map[i][j] == '1')
-				mlx_put_image_to_window(data->mlx, data->win, data->)
+				mlx_put_image_to_window
 		}
 	}
 }*/
@@ -57,29 +37,48 @@ void	img_init(t_data *data, char *av)
 		&data->x, &data->y);
 	data->west = mlx_xpm_file_to_image(data->mlx, data->we_p,
 		&data->x, &data->y);
-	read_map(data, av);
 }
 
-void	read_map(t_data *data, char *av)
+void	draw_3d()
 {
-	int		i;
-	int		j;
+	int	r;
+	int	mx;
+	int	my;
+	int	mp;
+	int	dof;
 
-	i = 0;
-	j = 0;
-	data->fd = open(av, O_RDONLY);
-	data->lines = count_lines(data);
-	close (data->fd);
-	data->fd = open(av, O_RDONLY);
-	data->map = ft_calloc(data->lines + 1, sizeof (char *));
-	ft_map_index(data);
-	data->win = mlx_new_window(data->mlx, ft_strlen(data->map[0]) * width,
-		data->lines * height, "cub3d");
-	if (data->win == NULL)
+	float	rx;
+	float	ry;
+	float	ra;
+	float	xo;
+	float	yo;
+	float	PI = 3.14;
+
+	ra = pa;
+	r = 0;
+	while (r < 1)
 	{
-		free(data->win);
-		return ;
+		dof = 0;
+		float	aTan = -1/tan(ra);
+		if (ra > PI)
+		{
+			ry = (((int) py >> 6) << 6) - 0.0001;
+			rx = (py - ry) * aTan + px;
+			yo = -64;
+			xo = -yo * aTan;
+		}
+		if (ra < PI)
+		{
+			ry = (((int) py >> 6) << 6) + 64;
+			rx = (py - ry) * aTan + px;
+			yo = -64;
+			xo = -yo * aTan;
+		}
 	}
-	//ft_put_window(data, i, j);
-	close (data->fd);
+	while (dof < 8)
+	{
+		mx = (int) (rx) >> 6;
+		my = (int) (ry) >> 6;
+		mp = my * mapX + mx;
+	}
 }

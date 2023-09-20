@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/19 17:28:02 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/20 10:54:59 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 # define width 500
 # define height 500
-# define mapWidth 50
-# define mapHeight 50
+# define textWidth 50
+# define textHeight 50
 
 typedef struct s_data
 {
@@ -34,12 +34,11 @@ typedef struct s_data
 	void	*west;
 	int		x;
 	int		y;
+	int		p_x;
+	int		p_y;
 	int		file_lenght;
 	int		configured;
 	int		conf_error;
-	int		fd;
-	int		lines;
-	int		columns;
 	char	**file;
 	char	**map;
 	char	*no_p;

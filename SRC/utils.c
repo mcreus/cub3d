@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:14:27 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/19 16:41:48 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/20 11:05:17 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,4 @@ void	free_tab(char **tab)
 	while (tab[i])
 		free(tab[i++]);
 	free(tab);
-}
-
-int	count_lines(t_data *data)
-{
-	int		i;
-	char	*str;
-	
-	i = 0;
-	while(1)
-	{
-		str = get_next_line(data->fd);
-		if (!str)
-			break;
-		free (str);
-		i++;
-	}
-	free (str);
-	return (i);
 }
