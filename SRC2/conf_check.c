@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:41:20 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/20 11:05:02 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/19 18:04:13 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void    select_identifier(t_data *data, char **line)
     else if (!ft_strncmp(line[0], "EA", 2))
         data->ea_p = ft_strtrim(line[1], "\n");
     else if (!ft_strncmp(line[0], "F", 1))
-        data->floor.name = ft_strtrim(line[1], "\n");
+        data->f_p = ft_strtrim(line[1], "\n");
     else if (!ft_strncmp(line[0], "C", 1))
-        data->ceiling.name = ft_strtrim(line[1], "\n");
+        data->c_p = ft_strtrim(line[1], "\n");
     else if (!data->configured)
         data->conf_error = 1;
 }
@@ -50,7 +50,7 @@ void    recup_element(t_data *data, char *s)
     }
     select_identifier(data, line);
     if (data->no_p && data->so_p && data->we_p && data->ea_p \
-        && data->floor.name && data->ceiling.name)
+        && data->f_p && data->c_p)
         data->configured = 1;
     free_tab(line);
 }
@@ -89,23 +89,22 @@ int    text_check(t_data *data)
 		return (error("Wrong north texture"));
     if (access(data->ea_p, R_OK))
 		return (error("Wrong east texture"));
-    if (check_color(&data->floor))
-        return (error("Wrong floor informations"));
-    if (check_color(&data->ceiling))
-        return (error("Wrong ceiling informations"));
     return (1);
 }
 
 void    conf_check(t_data *data)
 {
-    data->ceiling.name = 0;
-    data->floor.name = 0;
+    data->c_p = 0;
+    data->f_p = 0;
     data->no_p = 0;
     data->so_p = 0;
     data->we_p = 0;
     data->ea_p = 0;
     data->x = 0;
     data->y = 0;
+    data->fd = 0;
+    data->lines = 0;
+    data->columns = 0;
     element_check(data);
     if (data->conf_error)
         return ;
