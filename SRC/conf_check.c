@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:41:20 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/20 11:05:02 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/21 15:34:07 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void    select_identifier(t_data *data, char **line)
     else if (!ft_strncmp(line[0], "EA", 2))
         data->ea_p = ft_strtrim(line[1], "\n");
     else if (!ft_strncmp(line[0], "F", 1))
-        data->f_p = ft_strtrim(line[1], "\n");
+        data->floor.name = ft_strtrim(line[1], "\n");
     else if (!ft_strncmp(line[0], "C", 1))
-        data->c_p = ft_strtrim(line[1], "\n");
+        data->ceiling.name = ft_strtrim(line[1], "\n");
     else if (!data->configured)
         data->conf_error = 1;
 }
@@ -50,7 +50,7 @@ void    recup_element(t_data *data, char *s)
     }
     select_identifier(data, line);
     if (data->no_p && data->so_p && data->we_p && data->ea_p \
-        && data->f_p && data->c_p)
+        && data->floor.name && data->ceiling.name)
         data->configured = 1;
     free_tab(line);
 }
@@ -70,7 +70,7 @@ int     element_check(t_data *data)
     }
     while (i < data->file_lenght && empty_line(data->file[i]))
         i++;
-    data->map = malloc(sizeof(char *) * (data->file_lenght - i +1));
+    data->map = malloc(sizeof(char *) * (data->file_lenght - i + 1));
     while (i < data->file_lenght)
         data->map[j++] = ft_strdup(data->file[i++]);
     data->map[j] = 0;
@@ -89,13 +89,17 @@ int    text_check(t_data *data)
 		return (error("Wrong north texture"));
     if (access(data->ea_p, R_OK))
 		return (error("Wrong east texture"));
+    if (check_color(&data->floor))
+        return (error("Wrong floor informations"));
+    if (check_color(&data->ceiling))
+        return (error("Wrong ceiling informations"));
     return (1);
 }
 
 void    conf_check(t_data *data)
 {
-    data->c_p = 0;
-    data->f_p = 0;
+    data->ceiling.name = 0;
+    data->floor.name = 0;
     data->no_p = 0;
     data->so_p = 0;
     data->we_p = 0;

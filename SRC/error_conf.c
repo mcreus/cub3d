@@ -20,10 +20,10 @@ int	error(char *s)
 
 void	free_data(t_data *data)
 {
-	if (data->c_p)
-		free(data->c_p);
-	if (data->f_p)
-		free(data->f_p);
+	if (data->ceiling.name)
+		free(data->ceiling.name);
+	if (data->floor.name)
+		free(data->floor.name);
 	if (data->no_p)
 		free(data->no_p);
 	if (data->we_p)
