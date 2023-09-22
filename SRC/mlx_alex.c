@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:45:41 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/22 11:16:41 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/22 14:06:18 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void    game_init(t_data *data)
     data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
     if (!data->win)
 		return ;
-
+	
     data->img_f.mlx_img = mlx_new_image(data->mlx,WIDTH , HEIGHT);
     data->img_f.addr = mlx_get_data_addr(data->img_f.mlx_img, &data->img_f.bpp,
                 &data->img_f.line_len, &data->img_f.endian);
