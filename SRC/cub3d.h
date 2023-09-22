@@ -19,8 +19,8 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
-# define width 500
-# define height 500
+# define WIDTH 3200
+# define HEIGHT 1800
 # define textWidth 50
 # define textHeight 50
 
@@ -31,6 +31,15 @@ typedef struct s_color
 	int		g;
 	int		b;
 }				t_color;
+
+typedef struct s_img
+{
+    void	*mlx_img;
+    char	*addr;
+    int		bpp;
+    int		line_len;
+    int		endian;
+}	t_img;
 
 typedef struct s_data
 {
@@ -55,6 +64,7 @@ typedef struct s_data
 	char	*ea_p;
 	t_color		floor;
 	t_color		ceiling;
+	t_img		img_f;
 }				t_data;
 
 int	conf_init(int argc, char *argv[], t_data *data);
@@ -65,5 +75,6 @@ int	error(char *s);
 void		free_error(t_data *data, char *s);
 void		conf_check(t_data *data);
 void		free_tab(char **tab);
+void    	game_init(t_data *data);
 
 #endif

@@ -29,6 +29,7 @@ int	main(int argc, char *argv[])
 	//data.win = mlx_new_window(data.mlx, 500, 500, "new project");
 	//mlx_key_hook(data.win, keysym, (void *)0);
 	//mlx_loop(data.mlx);
+	game_init(&data);
 	if (data.file)
 		free_error(&data, "Fin du jeu\n");
 }
