@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_alex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:45:41 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/21 15:45:58 by aperrein         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:16:41 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void    game_init(t_data *data)
     data->mlx = mlx_init();
     if (!data->mlx)
 		return ;
-    data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "test");
+    data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
     if (!data->win)
 		return ;
 
@@ -82,6 +82,9 @@ void    game_init(t_data *data)
 
     mlx_loop_hook(data->mlx, &view, data);
 	//mlx_hook(data->win, 17, 0, &end_window, data);
-	//mlx_hook(data->win, KeyPress, KeyPressMask, &keypress, data);
+	mlx_hook(data->win, KeyPress, KeyPressMask, &handle_input, data);
 	mlx_loop(data->mlx);
+	mlx_destroy_image(data->mlx, data->img_f.mlx_img);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
 }

@@ -6,7 +6,7 @@
 #    By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/18 15:02:00 by aperrein          #+#    #+#              #
-#    Updated: 2023/09/22 10:07:26 by mcreus           ###   ########.fr        #
+#    Updated: 2023/09/22 11:12:12 by mcreus           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ_DIR =	OBJ/
 SRC_DIR =	SRC/
 
 SRC	=	main.c conf_init.c conf_check.c error_conf.c utils.c map_check.c \
-		check_color.c mlx_alex.c
+		check_color.c mlx_alex.c mlx_utils.c
 
 OBJ	=	$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

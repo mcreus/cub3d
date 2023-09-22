@@ -6,14 +6,14 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:45:52 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/21 15:39:40 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/22 11:10:11 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 
-void	init_screen(t_data *data)
+/*void	init_screen(t_data *data)
 {
 	if (data == NULL)
 	{
@@ -26,7 +26,7 @@ void	init_screen(t_data *data)
 	//draw_player(data);
 	mlx_loop(data->mlx);
 }
-
+*/
 /*void	draw_player(t_data *data)
 {
 	data->p_x = 300;
