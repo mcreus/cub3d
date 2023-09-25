@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:52:39 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/25 14:19:05 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/25 15:00:48 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_player(t_data *data)
 {
-	if (data->N != 1 || data->S != 1 || data->W != 1 || data->E != 1)
+	if (data->N != 1 || data->S != 1 || data->W != 1 || data->E !=1)
 	{
 		ft_putstr_fd("Error\n Wrong number of views\n", 2);
 		ft_finish(data);

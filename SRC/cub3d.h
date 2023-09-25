@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <X11/X.h>
 # include <fcntl.h>
+# include <math.h>
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 

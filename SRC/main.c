@@ -22,7 +22,8 @@ int	main(int argc, char *argv[])
 	//data.win = mlx_new_window(data.mlx, 500, 500, "new project");
 	//mlx_hook(data.win, DestroyNotify, ButtonPressMask, mlx_destroy, &data);
 	//mlx_loop(data.mlx);
-	game_init(&data);
+	if (data.file)
+		game_init(&data);
 	if (data.file)
 		free_error(&data, "Fin du jeu\n");
 }
