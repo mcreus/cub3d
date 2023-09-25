@@ -56,8 +56,6 @@ void	conf_fill(char *file, t_data *data)
 	while (i < data->file_lenght)
 	{
 		data->file[i] = get_next_line(fd);
-		if (data->file[i] == '1' && data->file[i + 1] == '1') /*check begin of map*/
-			data->map[0] = data->file[i]; /*ajout max*/
 		i++;
 	}
 	data->file[i] = 0;

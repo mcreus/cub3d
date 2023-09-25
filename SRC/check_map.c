@@ -14,7 +14,7 @@
 
 void	check_player(t_data *data)
 {
-	if (data->N != 1 || data->S != 1 || data->W != 1 || data->E)
+	if (data->N != 1 || data->S != 1 || data->W != 1 || data->E !=1)
 	{
 		ft_putstr_fd("Error\n Wrong number of views\n", 2);
 		ft_finish(data);
