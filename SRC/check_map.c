@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:52:39 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/25 15:00:48 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/25 15:16:12 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,27 @@ void	check_walls(t_data *data)
 int	flood_fill(t_data *data, int x, int y, char **map)
 {
 	if (y < 0 || x < 0 || y > data->lines || x > data->columns
-		|| map[y][x] == '1' || map[y][x] =='X')
+		|| map[y][x] == '1' || map[y][x] == 'X')
+		return (0);
+	if (map[y][x] != '0')
 		return (0);
 	map[y][x] = 'X';
 	flood_fill(data, map, x + 1, y);
 	flood_fill(data, map, x - 1, y);
 	flood_fill(data, map, x, y + 1);
 	flood_fill(data, map, x, y - 1);
+	return (1);
+}
+
+void	ft_check_path(t_data *data)
+{
+	ft_map_dup(data);
+	if (ft_flood_fill(data, data->map_dup, data->p_x, data->p_y) != 1)
+	{
+		ft_putstr_fd("Error\nInvalid Map Path\n", 2);
+		ft_free_map2(data);
+		ft_finish2(data);
+	}
+	else
+		ft_free_map2(data);
 }
