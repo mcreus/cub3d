@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/22 16:23:38 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/25 23:26:05 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ typedef struct s_img
     int		endian;
 }	t_img;
 
+typedef struct s_moves
+{
+	int		move_forward;
+	int		move_back;
+	int		step_to_left;
+	int		step_to_right;
+	int		rotate_left;
+	int		rotate_right;
+	float 	move_speed;
+	float	rotate_speed;
+}	t_moves;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -57,13 +69,15 @@ typedef struct s_data
 	int			N;
 	int			x;
 	int			y;
+	int			p_x;
+	int			p_y;
 	int			columns;
 	int			lines;
 	int			file_lenght;
 	int			configured;
 	int			conf_error;
-	float		p_x;
-	float		p_y;
+	float		pos_x;
+	float		pos_y;
 	float		dir_x;
 	float		dir_y;
 	float		plan_x;
@@ -72,13 +86,16 @@ typedef struct s_data
 	float		camera_y;
 	char		**file;
 	char		**map;
+	char		**map_dup;
 	char		*no_p;
 	char		*so_p;
 	char		*we_p;
 	char		*ea_p;
+	char		start_player;
 	t_color		floor;
 	t_color		ceiling;
 	t_img		img_f;
+	t_moves		moves;
 }				t_data;
 
 int			conf_init(int argc, char *argv[], t_data *data);
@@ -104,4 +121,12 @@ int			handle_input(int keysym, t_data *data);
 void		draw_2d(void *mlx, void *win);
 void 		draw_square2(void *mlx_ptr, void *win_ptr, int x, int y, int color);
 void		fill_map_to_data();
+
+/*MOVES*/
+void	init_dir(t_data *data);
+void	init_ray(t_data *data);
+void	ft_moves_WS(t_data *data);
+void	ft_moves_AD(t_data *data);
+void	ft_rotate(t_data *data);
+
 #endif
