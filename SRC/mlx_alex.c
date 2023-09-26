@@ -64,7 +64,7 @@ void     background(t_data *data)
 
 void	test_ray(t_data *data)
 {
-  double posX = 3, posY = 3;  //x and y start position
+  double posX = 2, posY = 1;  //x and y start position
   double dirX = -1, dirY = 0; //initial direction vector
   double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
 
@@ -77,8 +77,8 @@ void	test_ray(t_data *data)
       double rayDirX = dirX + planeX * cameraX;
       double rayDirY = dirY + planeY * cameraX;
       //which box of the map we're in
-      int mapX = 3;
-      int mapY = 3;
+      int mapX = (int)posX;
+      int mapY = (int)posY;
 
       //length of ray from current position to next x or y-side
       double sideDistX;
