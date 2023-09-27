@@ -80,3 +80,21 @@ void	dup_map(t_data *data)
 		i++;
 	}
 }
+
+char	**clone(t_data *data)
+{
+	int		i;
+	char	**res;
+
+	i = 0;
+	while (data->map[i])
+		i++;
+	res = malloc(sizeof(char *) * i);
+	i = 0;
+	while (data->map[i])
+	{
+		res[i] = ft_strdup(data->map[i]);
+		i++;
+	}
+	return (res);
+}

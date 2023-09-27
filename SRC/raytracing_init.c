@@ -12,6 +12,26 @@
 
 #include "cub3d.h"
 
+void	init_dir(t_data *data)
+{
+	if (data->start_player == 'N')
+		data->dir_y = -1;
+	if (data->start_player == 'S')
+		data->dir_y = 1;
+	if (data->start_player == 'E')
+		data->dir_x = 1;
+	if (data->start_player == 'W')
+		data->dir_x = -1;
+	if (data->start_player == 'N')
+		data->plan_x = 0.66;
+	if (data->start_player == 'S')
+		data->plan_x = -0.66;
+	if (data->start_player == 'E')
+		data->plan_y = 0.66;
+	if (data->start_player == 'W')
+		data->plan_y = -0.66;
+}
+
 void	init_ray(t_data *data)
 {
 	data->start_player = 'p';
@@ -31,24 +51,3 @@ void	init_ray(t_data *data)
 	data->moves.rotate_speed = 0.033 * 1.8;
 	init_dir(data);
 }
-
-void	init_dir(t_data *data)
-{
-	if (data->start_player == 'N')
-		data->dir_x = -1;
-	if (data->start_player == 'S')
-		data->dir_x = 1;
-	if (data->start_player == 'E')
-		data->dir_y = 1;
-	if (data->start_player == 'W')
-		data->dir_y = -1;
-	if (data->start_player == 'N')
-		data->plan_y = 0.66;
-	if (data->start_player == 'S')
-		data->plan_y = -0.66;
-	if (data->start_player == 'E')
-		data->plan_x = 0.66;
-	if (data->start_player == 'W')
-		data->plan_x = -0.66;
-}
-

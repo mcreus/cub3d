@@ -236,7 +236,7 @@ void	test_ray(t_data *data)
 
 int		view(t_data *data)
 {
-	if (!data->win)
+  if (!data->win)
         return (1);
 	background(data);
 	test_ray(data);
@@ -249,25 +249,25 @@ int		view(t_data *data)
 
 void    game_init(t_data *data)
 {
-    data->mlx = mlx_init();
-    init_ray(data);
-    if (!data->mlx)
-		  return ;
-    data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
-    if (!data->win)
-		  return ;
+  data->mlx = mlx_init();
+  init_ray(data);
+  if (!data->mlx)
+	  return ;
+  data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
+  if (!data->win)
+		return ;
 	
-    data->img_f.mlx_img = mlx_new_image(data->mlx,WIDTH , HEIGHT);
-    data->img_f.addr = mlx_get_data_addr(data->img_f.mlx_img, &data->img_f.bpp,
-                &data->img_f.line_len, &data->img_f.endian);
+  data->img_f.mlx_img = mlx_new_image(data->mlx,WIDTH , HEIGHT);
+  data->img_f.addr = mlx_get_data_addr(data->img_f.mlx_img, &data->img_f.bpp,
+          &data->img_f.line_len, &data->img_f.endian);
 
 
-    mlx_loop_hook(data->mlx, &view, data);
+  mlx_loop_hook(data->mlx, &view, data);
 	//mlx_hook(data->win, 17, 0, &end_window, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, &handle_input, data);
   //mlx_loop_hook(data->mlx, test_ray, data);
-	mlx_loop(data->mlx);
-	mlx_destroy_image(data->mlx, data->img_f.mlx_img);
+  mlx_loop(data->mlx);
+  mlx_destroy_image(data->mlx, data->img_f.mlx_img);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 }

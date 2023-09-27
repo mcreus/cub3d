@@ -36,10 +36,17 @@ void	free_data(t_data *data)
 	data->file = 0;
 	free_tab(data->map);
 	data->map = 0;
+
 }
 
 void	free_error(t_data *data, char *s)
 {
 	free_data(data);
+	data->no_p = 0;
+	data->we_p = 0;
+	data->ea_p = 0;
+	data->so_p = 0;
+	data->floor.name = 0;
+	data->ceiling.name = 0;
 	ft_printf("%s", s);
 }

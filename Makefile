@@ -20,8 +20,9 @@ OBJ_DIR =	OBJ/
 
 SRC_DIR =	SRC/
 
-SRC	=	main.c conf_init.c conf_check.c error_conf.c utils.c \
-		check_color.c mlx_alex.c raytracing_init.c moves.c
+SRC	=	main.c conf_init.c conf_check.c error_conf.c  \
+		check_color.c raytracing_init.c moves.c utils.c \
+		mlx_alex.c check_map_test.c
 
 OBJ	=	$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

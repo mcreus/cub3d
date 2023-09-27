@@ -102,10 +102,11 @@ int			cub_check(char *s);
 int			empty_line(char *s);
 int			error(char *s);
 int			ft_finish(t_data *data);
+char		**clone(t_data *data);
 
 void		free_error(t_data *data, char *s);
 void		conf_check(t_data *data);
-void		map_check(t_data *data);
+void		check_map(t_data *data);
 void		free_tab(char **tab);
 void    	game_init(t_data *data);
 
@@ -122,7 +123,6 @@ void 		draw_square2(void *mlx_ptr, void *win_ptr, int x, int y, int color);
 void		fill_map_to_data();
 
 /*MOVES*/
-void	init_dir(t_data *data);
 void	init_ray(t_data *data);
 void	ft_moves_WS(t_data *data);
 void	ft_moves_AD(t_data *data);

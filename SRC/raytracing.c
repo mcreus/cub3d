@@ -13,7 +13,7 @@
 #include "cub3d.h"
 
 
-void	start_ray(t_data *data)
+/*void	start_ray(t_data *data)
 {
 	float	time;
 	float	old_time;
@@ -31,7 +31,7 @@ void	start_ray(t_data *data)
 	}
 }
 
-/*void	draw_3d()
+void	draw_3d()
 {
 	int	r;
 	int	mx;
