@@ -63,10 +63,6 @@ typedef struct s_data
 	void		*south;
 	void		*east;
 	void		*west;
-	int			S;
-	int			W;
-	int			E;
-	int			N;
 	int			x;
 	int			y;
 	int			p_x;
@@ -76,6 +72,8 @@ typedef struct s_data
 	int			file_lenght;
 	int			configured;
 	int			conf_error;
+	int			map_error;
+	int			nbr_player;
 	float		pos_x;
 	float		pos_y;
 	float		dir_x;
@@ -107,6 +105,7 @@ int			ft_finish(t_data *data);
 
 void		free_error(t_data *data, char *s);
 void		conf_check(t_data *data);
+void		map_check(t_data *data);
 void		free_tab(char **tab);
 void    	game_init(t_data *data);
 

@@ -17,6 +17,7 @@ int	main(int argc, char *argv[])
 	t_data	data;
 
 	conf_init(argc, argv, &data);
+	//check_map(&data);
 	//init_screen(&data);
 	//data.mlx = mlx_init();
 	//data.win = mlx_new_window(data.mlx, 500, 500, "new project");

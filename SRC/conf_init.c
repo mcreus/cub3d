@@ -32,7 +32,7 @@ int	line_nb(char *s, t_data *data)
 	i = 0;
 	fd = open(s, O_RDONLY);
 	if (fd == -1)
-		return (error("No such file or directory"));
+		return (error("Error\nNo such file or directory"));
 	line = get_next_line(fd);
 	if (line)
 		data->file_lenght = (int)ft_strlen(line) - 1;

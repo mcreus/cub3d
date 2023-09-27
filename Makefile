@@ -27,7 +27,7 @@ OBJ	=	$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 RM	=	rm -f
 
-CFLAGS	=	-Wall -Wextra
+CFLAGS	=	-Werror -Wall -Wextra
 
 all     :       $(OBJ_DIR) $(NAME)
 	
@@ -40,7 +40,7 @@ $(OBJ_DIR) :
 $(NAME)	:	$(OBJ) $(L)
 		make -s -C libft/
 		make -s -C minilibx
-		gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) minilibx/libmlx.a -lX11 -lXext
+		gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) minilibx/libmlx.a -lX11 -lXext -lm
 
 clean	:
 		$(RM) $(OBJ)

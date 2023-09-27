@@ -75,24 +75,24 @@ int     element_check(t_data *data)
         data->map[j++] = ft_strdup(data->file[i++]);
     data->map[j] = 0;
     if (data->conf_error)
-        free_error(data, "Configuration issues\n");
+        free_error(data, "Error\nConfiguration issues\n");
     return (0);
 }
 
 int    text_check(t_data *data)
 {
     if (access(data->we_p, R_OK))
-		return (error("Wrong west texture"));
+		return (error("Error\nWrong west texture"));
     if (access(data->so_p, R_OK))
-		return (error("Wrong south texture"));
+		return (error("Error\nWrong south texture"));
     if (access(data->no_p, R_OK))
-		return (error("Wrong north texture"));
+		return (error("Error\nWrong north texture"));
     if (access(data->ea_p, R_OK))
-		return (error("Wrong east texture"));
+		return (error("Error\nWrong east texture"));
     if (check_color(&data->floor))
-        return (error("Wrong floor informations"));
+        return (error("Error\nWrong floor informations"));
     if (check_color(&data->ceiling))
-        return (error("Wrong ceiling informations"));
+        return (error("Error\nWrong ceiling informations"));
     return (1);
 }
 

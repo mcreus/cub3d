@@ -64,7 +64,7 @@ void     background(t_data *data)
 
 void	test_ray(t_data *data)
 {
-  double posX = 2, posY = 1;  //x and y start position
+  double posX = 5, posY = 5;  //x and y start position
   double dirX = -1, dirY = 0; //initial direction vector
   double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
 
