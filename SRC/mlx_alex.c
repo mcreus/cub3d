@@ -64,9 +64,9 @@ void     background(t_data *data)
 
 void	test_ray(t_data *data)
 {
-  double posX = 5, posY = 5;  //x and y start position
-  double dirX = -1, dirY = 0; //initial direction vector
-  double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
+  double posX = data->x, posY = data->y;  //x and y start position
+  double dirX = data->dir_x, dirY = data->dir_y; //initial direction vector
+  double planeX = data->plan_x, planeY = data->plan_y; //the 2d raycaster version of camera plane
 
   //while(!done())
  // {
@@ -237,14 +237,14 @@ void	test_ray(t_data *data)
 int		view(t_data *data)
 {
   if (!data->win)
-        return (1);
+    return (1);
 	background(data);
 	test_ray(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_f.mlx_img, 0, 0);
   ft_moves_WS(data);
   ft_moves_AD(data);
   ft_rotate(data);
-    return (0);
+  return (0);
 }
 
 void    game_init(t_data *data)

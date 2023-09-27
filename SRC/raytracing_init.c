@@ -34,7 +34,6 @@ void	init_dir(t_data *data)
 
 void	init_ray(t_data *data)
 {
-	data->start_player = 'p';
 	data->moves.move_forward = 0;
 	data->moves.move_back = 0;
 	data->moves.step_to_left = 0;
@@ -43,10 +42,6 @@ void	init_ray(t_data *data)
 	data->moves.rotate_left = 0;
 	data->pos_x = (float)data->x + 0.5;
 	data->pos_y = (float)data->y + 0.5;
-	data->dir_x = 0;
-	data->dir_y = 0;
-	data->plan_x = 0;
-	data->plan_y = 0;
 	data->moves.move_speed = 0.1;
 	data->moves.rotate_speed = 0.033 * 1.8;
 	init_dir(data);

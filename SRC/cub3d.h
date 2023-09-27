@@ -74,6 +74,7 @@ typedef struct s_data
 	int			conf_error;
 	int			map_error;
 	int			nbr_player;
+	int			error_wall;
 	float		pos_x;
 	float		pos_y;
 	float		dir_x;
@@ -84,7 +85,7 @@ typedef struct s_data
 	float		camera_y;
 	char		**file;
 	char		**map;
-	char		**map_dup;
+	char		**clone;
 	char		*no_p;
 	char		*so_p;
 	char		*we_p;

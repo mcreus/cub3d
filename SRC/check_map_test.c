@@ -19,6 +19,7 @@ void    check_init_pos(char c, t_data *data, int j, int i)
     data->x = i;
     data->y = j;
     data->start_player = c;
+    data->map[j][i] = '0';
     data->nbr_player++;
 }
 
@@ -48,9 +49,32 @@ void    check_player(t_data *data)
         free_error(data, "Error\nUnauthorized character in the map\n");
 }
 
+void	recur_path(t_data *data, int y, int x)
+{
+	if (data->clone[y][x] == '1' || data->clone[y][x] == '2')
+		return ;
+    if (x == 0 || !data->clone[y][x + 1] || y == 0 || !data->clone[y + 1])
+    {
+        data->error_wall = 1;
+        return ;
+    }
+	if (data->clone[y][x] == ' ')
+		data->error_wall = 1;
+	data->clone[y][x] = '2';
+	recur_path(data, y, x - 1);
+	recur_path(data, y, x + 1);
+	recur_path(data, y - 1, x);
+	recur_path(data, y + 1, x);
+}
+
 void    check_surrounded(t_data *data)
 {
-
+    data->error_wall = 0;
+    data->clone = clone(data);
+    recur_path(data, data->y, data->x);
+    free_tab(data->clone);
+    if (data->error_wall)
+        free_error(data, "Error\nMap not surrounded by wall\n");
 }
 
 void    check_map(t_data *data)
@@ -60,5 +84,6 @@ void    check_map(t_data *data)
         check_player(data);
         if (data->nbr_player != 1)
             free_error(data, "Error\nNumber of player not correct\n");
-        check_surrounded(data);
+        if (data->file)
+            check_surrounded(data);
 }

@@ -68,7 +68,7 @@ int	ft_count_lines(t_data *data)
 	return (i);
 }
 
-void	dup_map(t_data *data)
+/*void	dup_map(t_data *data)
 {
 	int	i;
 
@@ -80,7 +80,7 @@ void	dup_map(t_data *data)
 		i++;
 	}
 }
-
+*/
 char	**clone(t_data *data)
 {
 	int		i;
@@ -89,12 +89,13 @@ char	**clone(t_data *data)
 	i = 0;
 	while (data->map[i])
 		i++;
-	res = malloc(sizeof(char *) * i);
+	res = malloc(sizeof(char *) * (i +1));
 	i = 0;
 	while (data->map[i])
 	{
 		res[i] = ft_strdup(data->map[i]);
 		i++;
 	}
+	res[i] = 0;
 	return (res);
 }
