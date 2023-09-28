@@ -51,8 +51,8 @@ typedef struct s_moves
 	int		step_to_right;
 	int		rotate_left;
 	int		rotate_right;
-	float 	move_speed;
-	float	rotate_speed;
+	double 	move_speed;
+	double	rotate_speed;
 }	t_moves;
 
 typedef struct s_data
@@ -63,26 +63,20 @@ typedef struct s_data
 	void		*south;
 	void		*east;
 	void		*west;
-	int			x;
-	int			y;
-	int			p_x;
-	int			p_y;
-	int			columns;
-	int			lines;
 	int			file_lenght;
 	int			configured;
 	int			conf_error;
 	int			map_error;
 	int			nbr_player;
 	int			error_wall;
-	float		pos_x;
-	float		pos_y;
-	float		dir_x;
-	float		dir_y;
-	float		plan_x;
-	float		plan_y;
-	float		camera_x;
-	float		camera_y;
+	double		x;
+	double		y;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plan_x;
+	double		plan_y;
 	char		**file;
 	char		**map;
 	char		**clone;

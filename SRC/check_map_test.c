@@ -16,8 +16,8 @@ void    check_init_pos(char c, t_data *data, int j, int i)
 {
     if (c == ' ' || c == '1' || c == '0' || c == '\n')
         return ;
-    data->x = i;
-    data->y = j;
+    data->x = i + 0.5;
+    data->y = j + 0.5;
     data->start_player = c;
     data->map[j][i] = '0';
     data->nbr_player++;

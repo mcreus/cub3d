@@ -49,7 +49,7 @@ void	free_tab(char **tab)
 		free(tab[i++]);
 	free(tab);
 }
-
+/*
 int	ft_count_lines(t_data *data)
 {
 	int		i;
@@ -68,7 +68,7 @@ int	ft_count_lines(t_data *data)
 	return (i);
 }
 
-/*void	dup_map(t_data *data)
+void	dup_map(t_data *data)
 {
 	int	i;
 
