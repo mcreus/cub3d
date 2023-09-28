@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/*
 void	check_player(t_data *data)
 {
 	if (data->N != 1 || data->S != 1 || data->W != 1 || data->E !=1)
@@ -99,3 +99,4 @@ void	ft_check_path(t_data *data)
 	else
 		ft_free_map2(data);
 }
+*/
