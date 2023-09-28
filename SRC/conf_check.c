@@ -14,17 +14,17 @@
 
 void    select_identifier(t_data *data, char **line)
 {
-    if (!ft_strncmp(line[0], "NO", 2))
+    if (!ft_strncmp(line[0], "NO", 2) && !data->no_p)
         data->no_p = ft_strtrim(line[1], "\n");
-    else if (!ft_strncmp(line[0], "SO", 2))
+    else if (!ft_strncmp(line[0], "SO", 2) && !data->so_p)
         data->so_p = ft_strtrim(line[1], "\n");
-    else if (!ft_strncmp(line[0], "WE", 2))
+    else if (!ft_strncmp(line[0], "WE", 2) && !data->we_p)
         data->we_p = ft_strtrim(line[1], "\n");
-    else if (!ft_strncmp(line[0], "EA", 2))
+    else if (!ft_strncmp(line[0], "EA", 2) && !data->ea_p)
         data->ea_p = ft_strtrim(line[1], "\n");
-    else if (!ft_strncmp(line[0], "F", 1))
+    else if (!ft_strncmp(line[0], "F", 1) && !data->floor.name)
         data->floor.name = ft_strtrim(line[1], "\n");
-    else if (!ft_strncmp(line[0], "C", 1))
+    else if (!ft_strncmp(line[0], "C", 1) && !data->ceiling.name)
         data->ceiling.name = ft_strtrim(line[1], "\n");
     else if (!data->configured)
         data->conf_error = 1;

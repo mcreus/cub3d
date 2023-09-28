@@ -64,18 +64,24 @@ void     background(t_data *data)
 
 void	test_ray(t_data *data)
 {
-  double posX = data->x, posY = data->y;  //x and y start position
-  double dirX = data->dir_x, dirY = data->dir_y; //initial direction vector
+  double posX = data->pos_x, posY = data->pos_y;  //x and y start position
+  double dirX;
+  double dirY; //initial direction vector
   double planeX = data->plan_x, planeY = data->plan_y; //the 2d raycaster version of camera plane
 
+  dirX = data->dir_x;
+  dirY = data->dir_y;
   //while(!done())
  // {
     for(int x = 0; x < WIDTH; x++)
     {
       //calculate ray position and direction
       double cameraX = 2 * x / (double)WIDTH - 1; //x-coordinate in camera space
-      double rayDirX = dirX + planeX * cameraX;
-      double rayDirY = dirY + planeY * cameraX;
+      double rayDirX;
+      double rayDirY;
+
+      rayDirX = dirX + planeX * cameraX;
+      rayDirY = dirY + planeY * cameraX;
       //which box of the map we're in
       int mapX = (int)posX;
       int mapY = (int)posY;
@@ -111,7 +117,7 @@ void	test_ray(t_data *data)
       //calculate step and initial sideDist
       if(rayDirX < 0)
       {
- 	    stepX = -1;
+ 	      stepX = -1;
         sideDistX = (posX - mapX) * deltaDistX;
       }
       else
@@ -245,9 +251,9 @@ int		view(t_data *data)
 	background(data);
 	test_ray(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_f.mlx_img, 0, 0);
-  ft_moves_WS(data);
-  ft_moves_AD(data);
-  ft_rotate(data);
+  //ft_moves_WS(data);
+  //ft_moves_AD(data);
+  //ft_rotate(data);
   return (0);
 }
 
