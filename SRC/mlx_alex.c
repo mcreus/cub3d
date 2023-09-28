@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:45:41 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/28 19:06:04 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/28 19:09:45 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,7 +251,7 @@ int	view(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->img_f.mlx_img, 0, 0);
 	ft_moves_ws(data);
 	ft_moves_ad(data);
-	ft_rotate(data);
+	ft_rotate1(data);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/28 18:48:39 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/28 19:08:28 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,8 @@ int			handle_input(int keysym, t_data *data);
 void		init_ray(t_data *data);
 void		ft_moves_ws(t_data *data);
 void		ft_moves_ad(t_data *data);
-void		ft_rotate(t_data *data);
+void		ft_rotate1(t_data *data);
+void		ft_rotate2(t_data *data);
 void		moves(int nb, t_data *data);
 void		init_ray(t_data *data);
 int			handle_input_release(int keysym, t_data *data);
