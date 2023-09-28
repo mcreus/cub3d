@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_conf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:46:21 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/18 15:17:36 by aperrein         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:40:57 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	free_data(t_data *data)
 	data->file = 0;
 	free_tab(data->map);
 	data->map = 0;
-
 }
 
 void	free_error(t_data *data, char *s)

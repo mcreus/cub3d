@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:14:27 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/25 13:39:05 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/28 19:01:34 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,38 +49,7 @@ void	free_tab(char **tab)
 		free(tab[i++]);
 	free(tab);
 }
-/*
-int	ft_count_lines(t_data *data)
-{
-	int		i;
-	char	*str;
 
-	i = 0;
-	while (1)
-	{
-		str = get_next_line(data->map[data->y][data->x]);
-		if (!str)
-			break ;
-		free(str);
-		i++;
-	}
-	free (str);
-	return (i);
-}
-
-void	dup_map(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	data->map_dup = ft_calloc(data->lines + 1, sizeof(char *));
-	while (i < data->lines)
-	{
-		data->map_dup[i] = ft_strdup(data->map[i]);
-		i++;
-	}
-}
-*/
 char	**clone(t_data *data)
 {
 	int		i;

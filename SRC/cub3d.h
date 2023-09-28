@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/28 13:40:49 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/28 18:48:39 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "../minilibx/mlx.h"
 
 # define WIDTH 3200
-# define HEIGHT 1800
+# define HEIGHT 900
 # define TEXTURE 50
 
 typedef struct s_color
@@ -36,11 +36,11 @@ typedef struct s_color
 
 typedef struct s_img
 {
-    void	*mlx_img;
-    char	*addr;
-    int		bpp;
-    int		line_len;
-    int		endian;
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
 }	t_img;
 
 typedef struct s_moves
@@ -51,7 +51,7 @@ typedef struct s_moves
 	int		step_to_right;
 	int		rotate_left;
 	int		rotate_right;
-	double 	move_speed;
+	double	move_speed;
 	double	rotate_speed;
 }	t_moves;
 
@@ -77,6 +77,7 @@ typedef struct s_data
 	double		dir_y;
 	double		plan_x;
 	double		plan_y;
+	double		p_angle;
 	char		**file;
 	char		**map;
 	char		**clone;
@@ -103,24 +104,17 @@ void		free_error(t_data *data, char *s);
 void		conf_check(t_data *data);
 void		check_map(t_data *data);
 void		free_tab(char **tab);
-void    	game_init(t_data *data);
-
-
+void		game_init(t_data *data);
 /*test raytracing*/
-void		init_screen(t_data *data);
-void		draw_player(t_data *data);
-void 		draw_square(void *mlx, void *win, int x, int y, int size, int color);
-void		keys(unsigned char key, int x, int y);
 int			mlx_destroy(t_data *data);
 int			handle_input(int keysym, t_data *data);
-void		draw_2d(void *mlx, void *win);
-void 		draw_square2(void *mlx_ptr, void *win_ptr, int x, int y, int color);
-void		fill_map_to_data();
-
 /*MOVES*/
-void	init_ray(t_data *data);
-void	ft_moves_WS(t_data *data);
-void	ft_moves_AD(t_data *data);
-void	ft_rotate(t_data *data);
+void		init_ray(t_data *data);
+void		ft_moves_ws(t_data *data);
+void		ft_moves_ad(t_data *data);
+void		ft_rotate(t_data *data);
+void		moves(int nb, t_data *data);
+void		init_ray(t_data *data);
+int			handle_input_release(int keysym, t_data *data);
 
 #endif

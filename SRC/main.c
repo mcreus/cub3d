@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:57:11 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/22 10:37:00 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/28 18:42:20 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ int	main(int argc, char *argv[])
 	conf_init(argc, argv, &data);
 	if (data.file)
 		check_map(&data);
-	//init_screen(&data);
-	//data.mlx = mlx_init();
-	//data.win = mlx_new_window(data.mlx, 500, 500, "new project");
-	//mlx_hook(data.win, DestroyNotify, ButtonPressMask, mlx_destroy, &data);
-	//mlx_loop(data.mlx);
 	if (data.file)
 		game_init(&data);
 	if (data.file)
