@@ -153,7 +153,11 @@ void	test_ray(t_data *data)
       else          perpWallDist = (sideDistY - deltaDistY);
 
       //Calculate height of line to draw on screen
-      int lineHeight = (int)(HEIGHT/ perpWallDist);
+      int lineHeight;
+      if (perpWallDist)
+        lineHeight = (int)(HEIGHT/ perpWallDist);
+      else
+        lineHeight = (int)(HEIGHT/ 0.5);
 
       //calculate lowest and highest pixel to fill in current stripe
       int drawStart = -lineHeight / 2 + HEIGHT / 2;

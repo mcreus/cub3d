@@ -35,17 +35,17 @@ int	handle_input(int keysym, t_data *data)
 		mlx_destroy_window(data->mlx, data->win);
 		data->win = NULL;
 	}
-	if (keysym == 119)
+	else if (keysym == 119)
 		data->moves.move_forward = 1;
-	if (keysym == 97)
+	else if (keysym == 97)
 		data->moves.step_to_left = 1;
-	if (keysym == 115)
+	else if (keysym == 115)
 		data->moves.move_back = 1;
-	if (keysym == 100)
+	else if (keysym == 100)
 		data->moves.step_to_right = 1;
-	if (keysym == 65361)
+	else if (keysym == 65361)
 		data->moves.rotate_left = 1;
-	if (keysym == 65363)
+	else if (keysym == 65363)
 		data->moves.rotate_right = 1;
 	return (0);
 }
