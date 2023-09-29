@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:22:31 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/22 18:39:11 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/29 11:31:02 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,12 @@ int	conf_init(int argc, char *argv[], t_data *data)
 	data->conf_error = 0;
 	data->configured = 0;
 	data->map = 0;
+	data->no = 0;
+	data->so = 0;
+	data->we = 0;
+	data->ea = 0;
+	data->ce = 0;
+	data->fl = 0;
 	if (!file_check(argc, argv[1]))
 		return (0);
 	conf_read(argv[1], data);

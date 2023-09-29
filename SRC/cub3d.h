@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/28 19:08:28 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/29 12:11:50 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,12 @@ typedef struct s_data
 	int			map_error;
 	int			nbr_player;
 	int			error_wall;
+	int			no;
+	int			so;
+	int			we;
+	int			ea;
+	int			fl;
+	int			ce;
 	double		x;
 	double		y;
 	double		pos_x;
@@ -99,6 +105,8 @@ int			empty_line(char *s);
 int			error(char *s);
 int			ft_finish(t_data *data);
 char		**clone(t_data *data);
+void		select_identifier2(t_data *data, char **line);
+void		recup_element(t_data *data, char *s);
 
 void		free_error(t_data *data, char *s);
 void		conf_check(t_data *data);
@@ -108,8 +116,8 @@ void		game_init(t_data *data);
 /*test raytracing*/
 int			mlx_destroy(t_data *data);
 int			handle_input(int keysym, t_data *data);
+int			ft_finish(t_data *data);
 /*MOVES*/
-void		init_ray(t_data *data);
 void		ft_moves_ws(t_data *data);
 void		ft_moves_ad(t_data *data);
 void		ft_rotate1(t_data *data);

@@ -6,7 +6,7 @@
 #    By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/18 15:02:00 by aperrein          #+#    #+#              #
-#    Updated: 2023/09/25 23:24:58 by mcreus           ###   ########.fr        #
+#    Updated: 2023/09/29 12:12:18 by mcreus           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC_DIR =	SRC/
 
 SRC	=	main.c conf_init.c conf_check.c error_conf.c  \
 		check_color.c raytracing_init.c moves.c utils.c \
-		mlx_alex.c check_map_test.c
+		mlx_alex.c check_map_test.c conf_check2.c mlx_destroy.c \
 
 OBJ	=	$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:45:41 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/28 19:09:45 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/29 12:54:36 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	while (i >= 0)
 	{
-		/* big endian, MSB is the leftmost bit */
 		if (img->endian != 0)
 			*pixel++ = (color >> i) & 0xFF;
-		/* little endian, LSB is the leftmost bit */
 		else
 			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
 		i -= 8;
@@ -270,10 +268,9 @@ void	game_init(t_data *data)
 
 
 	mlx_loop_hook(data->mlx, &view, data);
-	//mlx_hook(data->win, 17, 0, &end_window, data);
+	mlx_hook(data->win, DestroyNotify, ButtonPressMask, &ft_finish, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, &handle_input, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, &handle_input_release, data);
-	//mlx_loop_hook(data->mlx, test_ray, data);
 	mlx_loop(data->mlx);
 	mlx_destroy_image(data->mlx, data->img_f.mlx_img);
 	mlx_destroy_display(data->mlx);
