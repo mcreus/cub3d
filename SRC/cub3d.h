@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/29 15:05:45 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/29 17:35:48 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ typedef struct s_ray
 	double	camerax;
 	double	ray_dirx;
 	double	ray_diry;
+	double	ray_dirx0;
+	double	ray_diry0;
+	double	ray_dirx1;
+	double	ray_diry1;
 	double	side_distx;
 	double	side_disty;
 	double	delta_distx;
