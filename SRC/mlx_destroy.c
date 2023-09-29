@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:41:15 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/29 12:45:29 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/29 15:33:20 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	ft_free_map(t_data *data)
 
 int	ft_finish(t_data *data)
 {
-	//mlx_destroy_image(data->mlx, data->ea_p);
-	//mlx_destroy_image(data->mlx, data->so_p);
-	//mlx_destroy_image(data->mlx, data->we_p);
-	//mlx_destroy_image(data->mlx, data->no_p);
+	mlx_destroy_image(data->mlx, data->ea_p);
+	mlx_destroy_image(data->mlx, data->so_p);
+	mlx_destroy_image(data->mlx, data->we_p);
+	mlx_destroy_image(data->mlx, data->no_p);
 	ft_free_map(data);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);

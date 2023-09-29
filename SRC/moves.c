@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:45:12 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/28 19:00:15 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/29 13:18:07 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,14 @@ void	ft_rotate1(t_data *data)
 	old_dirx = data->dir_x;
 	if (data->moves.rotate_left == 1)
 	{
-		data->dir_x = data->dir_x * cos(-data->moves.rotate_speed / 2)
-			- data->dir_y * sin(-data->moves.rotate_speed / 2);
-		data->dir_y = old_dirx * sin(-data->moves.rotate_speed / 2)
-			+ data->dir_y * cos(-data->moves.rotate_speed / 2);
-		data->plan_x = data->plan_x * cos(-data->moves.rotate_speed / 2)
-			- data->plan_y * sin(-data->moves.rotate_speed / 2);
-		data->plan_y = old_planx * sin(-data->moves.rotate_speed / 2)
-			+ data->plan_y * cos(-data->moves.rotate_speed / 2);
+		data->dir_x = data->dir_x * cos(-data->moves.rotate_speed)
+			- data->dir_y * sin(-data->moves.rotate_speed);
+		data->dir_y = old_dirx * sin(-data->moves.rotate_speed)
+			+ data->dir_y * cos(-data->moves.rotate_speed);
+		data->plan_x = data->plan_x * cos(-data->moves.rotate_speed)
+			- data->plan_y * sin(-data->moves.rotate_speed);
+		data->plan_y = old_planx * sin(-data->moves.rotate_speed)
+			+ data->plan_y * cos(-data->moves.rotate_speed);
 	}
 	else
 		ft_rotate2(data);
@@ -99,13 +99,13 @@ void	ft_rotate2(t_data *data)
 	old_dirx = data->dir_x;
 	if (data->moves.rotate_right == 1)
 	{
-		data->dir_x = data->dir_x * cos(data->moves.rotate_speed / 2)
-			- data->dir_y * sin(data->moves.rotate_speed / 2);
-		data->dir_y = old_dirx * sin(data->moves.rotate_speed / 2)
-			+ data->dir_y * cos(data->moves.rotate_speed / 2);
-		data->plan_x = data->plan_x * cos(data->moves.rotate_speed / 2)
-			- data->plan_y * sin(data->moves.rotate_speed / 2);
-		data->plan_y = old_planx * sin(data->moves.rotate_speed / 2)
-			+ data->plan_y * cos(data->moves.rotate_speed / 2);
+		data->dir_x = data->dir_x * cos(data->moves.rotate_speed)
+			- data->dir_y * sin(data->moves.rotate_speed);
+		data->dir_y = old_dirx * sin(data->moves.rotate_speed)
+			+ data->dir_y * cos(data->moves.rotate_speed);
+		data->plan_x = data->plan_x * cos(data->moves.rotate_speed)
+			- data->plan_y * sin(data->moves.rotate_speed);
+		data->plan_y = old_planx * sin(data->moves.rotate_speed)
+			+ data->plan_y * cos(data->moves.rotate_speed);
 	}
 }

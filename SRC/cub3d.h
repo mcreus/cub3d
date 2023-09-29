@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/29 12:11:50 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/29 15:05:45 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "../minilibx/mlx.h"
 
 # define WIDTH 3200
-# define HEIGHT 900
+# define HEIGHT 1000
 # define TEXTURE 50
 
 typedef struct s_color
@@ -54,6 +54,27 @@ typedef struct s_moves
 	double	move_speed;
 	double	rotate_speed;
 }	t_moves;
+
+typedef struct s_ray
+{
+	double	camerax;
+	double	ray_dirx;
+	double	ray_diry;
+	double	side_distx;
+	double	side_disty;
+	double	delta_distx;
+	double	delta_disty;
+	double	perp_wall_dist;
+	int		mapx;
+	int		mapy;
+	int		stepx;
+	int		stepy;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}	t_ray;
 
 typedef struct s_data
 {
@@ -96,6 +117,7 @@ typedef struct s_data
 	t_color		ceiling;
 	t_img		img_f;
 	t_moves		moves;
+	t_ray		ray;
 }				t_data;
 
 int			conf_init(int argc, char *argv[], t_data *data);

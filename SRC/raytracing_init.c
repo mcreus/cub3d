@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 22:37:37 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/28 19:05:47 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/09/29 13:21:21 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_ray(t_data *data)
 	data->pos_x = (float)data->x;
 	data->pos_y = (float)data->y;
 	data->moves.move_speed = 0.1;
-	data->moves.rotate_speed = 0.2;
+	data->moves.rotate_speed = 0.1;
 	init_dir(data);
 }
 
