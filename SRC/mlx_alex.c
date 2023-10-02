@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:45:41 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/29 18:23:26 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/02 09:31:12 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	test_ray(t_data *data)
 		data->ray.draw_end = data->ray.line_height / 2 + HEIGHT / 2;
 		if (data->ray.draw_end >= HEIGHT)
 			data->ray.draw_end = HEIGHT - 1;
-		//switch (data->map[data->ray.mapy][data->ray.mapx])
+		switch (data->map[data->ray.mapy][data->ray.mapx])
 		{
 			case 1:  color = 16711680;    break; //red
 			case 2:  color = 65280;  break; //green

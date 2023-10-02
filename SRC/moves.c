@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:45:12 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/29 17:28:01 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/02 09:33:05 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	ft_moves_ad(t_data *data)
 
 void	ft_rotate1(t_data *data)
 {
-	float	old_planx;
-	float	old_dirx;
+	double	old_planx;
+	double	old_dirx;
 
 	old_planx = data->plan_x;
 	old_dirx = data->dir_x;
@@ -81,8 +81,8 @@ void	ft_rotate1(t_data *data)
 
 void	ft_rotate2(t_data *data)
 {
-	float	old_planx;
-	float	old_dirx;
+	double	old_planx;
+	double	old_dirx;
 
 	old_planx = data->plan_x;
 	old_dirx = data->dir_x;

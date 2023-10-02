@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:59:23 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/29 18:23:39 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/02 09:49:52 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 void	img_init(t_data *data)
 {
-	(void)av;
 	data->north = mlx_xpm_file_to_image(data->mlx, data->no_p,
 		&data->x, &data->y);
 	data->south = mlx_xpm_file_to_image(data->mlx, data->so_p,
