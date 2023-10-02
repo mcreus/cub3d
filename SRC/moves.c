@@ -6,12 +6,11 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:45:12 by mcreus            #+#    #+#             */
-/*   Updated: 2023/10/02 09:33:05 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/02 09:54:26 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 void	ft_moves_ws(t_data *data)
 {

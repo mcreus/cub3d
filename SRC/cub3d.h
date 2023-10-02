@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/29 17:35:48 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/02 14:32:49 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 
 # define WIDTH 3200
 # define HEIGHT 1000
-# define TEXTURE 50
 
 typedef struct s_color
 {
@@ -36,11 +35,17 @@ typedef struct s_color
 
 typedef struct s_img
 {
-	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
+	void		*mlx_img;
+	char		*addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
+	void		*north;
+	void		*south;
+	void		*east;
+	void		*west;
+	int			text_width;
+	int			text_height;
 }	t_img;
 
 typedef struct s_moves
@@ -84,10 +89,6 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
-	void		*north;
-	void		*south;
-	void		*east;
-	void		*west;
 	int			file_lenght;
 	int			configured;
 	int			conf_error;
@@ -151,5 +152,6 @@ void		ft_rotate2(t_data *data);
 void		moves(int nb, t_data *data);
 void		init_ray(t_data *data);
 int			handle_input_release(int keysym, t_data *data);
+void		img_init(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 22:37:37 by mcreus            #+#    #+#             */
-/*   Updated: 2023/09/29 13:21:21 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/02 14:34:33 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ void	init_ray(t_data *data)
 	data->moves.step_to_right = 0;
 	data->moves.rotate_right = 0;
 	data->moves.rotate_left = 0;
-	data->pos_x = (float)data->x;
-	data->pos_y = (float)data->y;
+	data->pos_x = (double)data->x;
+	data->pos_y = (double)data->y;
 	data->moves.move_speed = 0.1;
 	data->moves.rotate_speed = 0.1;
+	data->img_f.text_height = 50;
+	data->img_f.text_width = 50;
 	init_dir(data);
 }
 
