@@ -136,16 +136,14 @@ void	test_ray(t_data *data)
 		data->ray.draw_end = data->ray.line_height / 2 + HEIGHT / 2;
 		if (data->ray.draw_end >= HEIGHT)
 			data->ray.draw_end = HEIGHT - 1;
-		switch (data->map[data->ray.mapy][data->ray.mapx])
-		{
-			case 1:  color = 16711680;    break; //red
-			case 2:  color = 65280;  break; //green
-			case 3:  color = 255;   break; //blue
-			case 4:  color = 16777215;  break; //white
-			default: color = 16776960; break; //yellow
-		}
-		if (data->ray.side == 1)
-			color = color / 2;
+		if (data->ray.side == 1 && data->ray.mapy >= data->y)
+			color = 16711680;		//red east
+		else if (data->ray.side == 1 && data->ray.mapy < data->y)
+			color = 65280;			//green west
+		if (data->ray.side == 0 && data->ray.mapx >= data->x)
+			color = 255;		//blue north
+		else if (data->ray.side == 0 && data->ray.mapx < data->x)
+			color = 16776960;			//yellow south
 		while (data->ray.draw_start < data->ray.draw_end)
 			img_pix_put(&data->img_f, x, data->ray.draw_start++, color);
 		x++;
