@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:45:41 by aperrein          #+#    #+#             */
-/*   Updated: 2023/10/02 15:00:02 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/03 09:53:31 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	background(t_data *data)
 void	test_ray(t_data *data)
 {
 	int		x;
-	int		color;
+	int		y;
+	//int		color;
 
 	x = 0;
 	while (x < WIDTH)
@@ -136,16 +137,22 @@ void	test_ray(t_data *data)
 		data->ray.draw_end = data->ray.line_height / 2 + HEIGHT / 2;
 		if (data->ray.draw_end >= HEIGHT)
 			data->ray.draw_end = HEIGHT - 1;
-		if (data->ray.side == 1 && data->ray.mapy >= data->y)
+		/*if (data->ray.side == 1 && data->ray.mapy >= data->y)
 			color = 16711680;		//red east
 		else if (data->ray.side == 1 && data->ray.mapy < data->y)
 			color = 65280;			//green west
 		if (data->ray.side == 0 && data->ray.mapx >= data->x)
 			color = 255;		//blue north
 		else if (data->ray.side == 0 && data->ray.mapx < data->x)
-			color = 16776960;			//yellow south
-		while (data->ray.draw_start < data->ray.draw_end)
-			img_pix_put(&data->img_f, x, data->ray.draw_start++, color);
+			color = 16776960;			//yellow south*/
+		y = 0;
+		if (y <= data->ray.draw_end)
+		{
+			ft_draw_texture(data, x, y);
+			textures(data);
+		}
+		//while (data->ray.draw_start < data->ray.draw_end)
+			//img_pix_put(&data->img_f, x, data->ray.draw_start++, color);
 		x++;
 	}
 }
