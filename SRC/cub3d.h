@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/10/03 18:23:05 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/04 14:18:52 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
-# define WIDTH 3200
-# define HEIGHT 1000
+# define WIDTH 1920
+# define HEIGHT 1080
+# define TEXTURE 50
 
 typedef struct s_color
 {
@@ -35,22 +36,13 @@ typedef struct s_color
 
 typedef struct s_img
 {
-	void		*mlx_img;
-	char		*addr;
-	int			bpp;
-	int			line_len;
-	int			endian;
-	void		*north;
-	void		*south;
-	void		*east;
-	void		*west;
-	int			text_width;
-	int			text_height;
-	double		text_pos;
-	double 		wall_x;
-	int			text_x;
-	int			text_y;
-	int			text_dir;
+	int		height;
+	int		width;
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
 }	t_img;
 
 typedef struct s_moves
@@ -64,6 +56,17 @@ typedef struct s_moves
 	double	move_speed;
 	double	rotate_speed;
 }	t_moves;
+
+typedef	struct s_text
+{
+	int		n_text;
+	double	step;
+	int		texX;
+	int		texY;
+	double	texPos;
+	int		color;
+	double	wallX;
+}				t_text;
 
 typedef struct s_ray
 {
@@ -89,12 +92,18 @@ typedef struct s_ray
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
+	int		var_x;
 }	t_ray;
 
 typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+	void		*north;
+	void		*south;
+	void		*east;
+	void		*west;
+	void		*actual_text;
 	int			file_lenght;
 	int			configured;
 	int			conf_error;
@@ -127,10 +136,14 @@ typedef struct s_data
 	char		start_player;
 	t_color		floor;
 	t_color		ceiling;
-	t_img		img_f;
-	t_img		textures[4];
+	t_img		img;
+	t_img		img_n;
+	t_img		img_so;
+	t_img		img_ea;
+	t_img		img_we;
 	t_moves		moves;
 	t_ray		ray;
+	t_text		texture;
 }				t_data;
 
 int			conf_init(int argc, char *argv[], t_data *data);
@@ -156,6 +169,14 @@ void    ft_draw_texture(t_data *data, int x, int y);
 void	img_init(t_data *data);
 void    textures(t_data *data);
 void    text_addr(t_data *data);
+void	texture_choice(t_data *data);
+void	texture_choice2(t_data *data);
+void	raycasting1(t_data *data);
+void	raycasting2(t_data *data);
+void	raycasting3(t_data *data);
+void	raycasting4(t_data *data);
+void	raycasting5(t_data *data);
+void	raycasting_hit(t_data *data);
 
 /*MOVES*/
 void		ft_moves_ws(t_data *data);
@@ -164,6 +185,7 @@ void		ft_rotate1(t_data *data);
 void		ft_rotate2(t_data *data);
 void		moves(int nb, t_data *data);
 void		init_ray(t_data *data);
+void		img_init(t_data *data);
 int			handle_input_release(int keysym, t_data *data);
 void		img_init(t_data *data);
 int			ft_path_texture(char *str, char **texture, t_data *data, int j);
