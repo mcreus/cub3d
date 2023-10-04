@@ -22,8 +22,8 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
-# define WIDTH 3200
-# define HEIGHT 1000
+# define WIDTH 1920
+# define HEIGHT 1080
 # define TEXTURE 50
 
 typedef struct s_color
@@ -36,6 +36,8 @@ typedef struct s_color
 
 typedef struct s_img
 {
+	int		height;
+	int		width;
 	void	*mlx_img;
 	char	*addr;
 	int		bpp;
@@ -88,6 +90,7 @@ typedef struct s_data
 	void		*south;
 	void		*east;
 	void		*west;
+	void		*actual_text;
 	int			file_lenght;
 	int			configured;
 	int			conf_error;
@@ -120,6 +123,7 @@ typedef struct s_data
 	t_color		floor;
 	t_color		ceiling;
 	t_img		img_f;
+	t_img		img_n;
 	t_moves		moves;
 	t_ray		ray;
 }				t_data;
@@ -150,6 +154,7 @@ void		ft_rotate1(t_data *data);
 void		ft_rotate2(t_data *data);
 void		moves(int nb, t_data *data);
 void		init_ray(t_data *data);
+void		img_init(t_data *data);
 int			handle_input_release(int keysym, t_data *data);
 
 #endif

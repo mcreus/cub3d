@@ -116,6 +116,8 @@ void	test_ray(t_data *data)
 			if (data->map[data->ray.mapy][data->ray.mapx] == '1')
 				data->ray.hit = 1;
 		}
+
+		//Calculate distance of perpendicular ray
 		if (data->ray.side == 0)
 		{
 			data->ray.perp_wall_dist = (data->ray.side_distx
@@ -126,26 +128,62 @@ void	test_ray(t_data *data)
 			data->ray.perp_wall_dist = (data->ray.side_disty
 					- data->ray.delta_disty);
 		}
+
 		if (data->ray.perp_wall_dist)
 			data->ray.line_height = (int)(HEIGHT / data->ray.perp_wall_dist);
 		else
 			data->ray.line_height = (int)(HEIGHT / 0.5);
+		
 		data->ray.draw_start = -data->ray.line_height / 2 + HEIGHT / 2;
 		if (data->ray.draw_start < 0)
 			data->ray.draw_start = 0;
 		data->ray.draw_end = data->ray.line_height / 2 + HEIGHT / 2;
 		if (data->ray.draw_end >= HEIGHT)
 			data->ray.draw_end = HEIGHT - 1;
+		
+		//calculate value of wallX
+      	double wallX; //where exactly the wall was hit
+     	if(data->ray.side == 0) wallX = data->y + data->ray.perp_wall_dist * data->ray.ray_diry;
+      	else          wallX = data->x + data->ray.perp_wall_dist * data->ray.ray_dirx;
+      	wallX -= floor(wallX);
+
+		//x coordinate on the texture
+     	int texX = (int)(wallX * data->img_n.width);
+    	//if(data->ray.side == 0 && data->ray.ray_dirx > 0) texX = data->img_n.width - texX - 1;
+    	//if(data->ray.side == 1 && data->ray.ray_diry < 0) texX = data->img_n.width - texX - 1;
+
+
 		if (data->ray.side == 1 && data->ray.mapy >= data->y)
-			color = 16711680;		//red east
+			color = 16711680;		//red south
 		else if (data->ray.side == 1 && data->ray.mapy < data->y)
-			color = 65280;			//green west
+			color = 65280;			//green north
+		int n_text;
+		n_text = 5;
+		data->actual_text = 0;
 		if (data->ray.side == 0 && data->ray.mapx >= data->x)
-			color = 255;		//blue north
+			n_text = 0;
+			//color = 255;		//blue east
 		else if (data->ray.side == 0 && data->ray.mapx < data->x)
-			color = 16776960;			//yellow south
+			color = 16776960;			//yellow west
+		
+		// TODO: an integer-only bresenham or DDA like algorithm could make the texture coordinate stepping faster
+      	// How much to increase the texture coordinate per screen pixel
+      	double step = 1.0 * data->img_n.height / data->ray.line_height;
+      	// Starting texture coordinate
+      	double texPos;
+		texPos = (data->ray.draw_start - HEIGHT / 2 + data->ray.line_height / 2) * step;
+		int texY;
+
 		while (data->ray.draw_start < data->ray.draw_end)
+		{
+			if (n_text == 0)
+			{
+				texY = (int)texPos & (data->img_n.height - 1);
+        		texPos += step;
+				color = ((int *)data->img_n.addr)[texX + (texY * data->img_n.line_len / sizeof(int))];
+			}
 			img_pix_put(&data->img_f, x, data->ray.draw_start++, color);
+		}
 		x++;
 	}
 }
@@ -175,6 +213,7 @@ void	game_init(t_data *data)
 	data->img_f.mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img_f.addr = mlx_get_data_addr(data->img_f.mlx_img, &data->img_f.bpp,
 			&data->img_f.line_len, &data->img_f.endian);
+	img_init(data);
 	mlx_loop_hook(data->mlx, &view, data);
 	mlx_hook(data->win, DestroyNotify, ButtonPressMask, &ft_finish, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, &handle_input, data);

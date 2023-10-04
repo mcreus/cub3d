@@ -15,20 +15,23 @@
 
 void	img_init(t_data *data)
 {
-	data->north = mlx_xpm_file_to_image(data->mlx, data->no_p,
-		&data->x, &data->y);
-	data->south = mlx_xpm_file_to_image(data->mlx, data->so_p,
+	data->img_n.mlx_img = mlx_xpm_file_to_image(data->mlx, data->ea_p,
+		&data->img_n.width, &data->img_n.height);
+  data->img_n.addr = mlx_get_data_addr(data->img_n.mlx_img, &data->img_n.bpp,
+			&data->img_n.line_len, &data->img_n.endian);
+  /*
+  	data->south = mlx_xpm_file_to_image(data->mlx, data->so_p,
 		&data->x, &data->y);
 	data->east = mlx_xpm_file_to_image(data->mlx, data->ea_p,
 		&data->x, &data->y);
 	data->west = mlx_xpm_file_to_image(data->mlx, data->we_p,
-		&data->x, &data->y);
+		&data->x, &data->y);*/
 }
-
+/*
 void	test_ray(t_data *data)
 {
 	//WALL CASTING
-   /* for(int x = 0; x < w; x++)
+    for(int x = 0; x < w; x++)
     {
       //calculate ray position and direction
       double cameraX = 2 * x / double(w) - 1; //x-coordinate in camera space
@@ -107,7 +110,7 @@ void	test_ray(t_data *data)
       int drawStart = -lineHeight / 2 + h / 2;
       if(drawStart < 0) drawStart = 0;
       int drawEnd = lineHeight / 2 + h / 2;
-      if(drawEnd >= h) drawEnd = h - 1;*/
+      if(drawEnd >= h) drawEnd = h - 1;
       //texturing calculations
       int texNum = worldMap[mapX][mapY] - 1; //1 subtracted from it so that texture 0 can be used!
 
@@ -137,3 +140,4 @@ void	test_ray(t_data *data)
         buffer[y][x] = color;
       }
 }
+*/
