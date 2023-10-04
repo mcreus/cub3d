@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:24:18 by mcreus            #+#    #+#             */
-/*   Updated: 2023/10/04 14:42:45 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/04 17:46:28 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,23 +77,23 @@ void	raycasting3(t_data *data)
 void	raycasting4(t_data *data)
 {
 	if (data->ray.side == 0)
-		data->texture.wallX = data->y + data->ray.perp_wall_dist
+		data->texture.wall_x = data->y + data->ray.perp_wall_dist
 			* data->ray.ray_diry;
 	else
-		data->texture.wallX = data->x + data->ray.perp_wall_dist
+		data->texture.wall_x = data->x + data->ray.perp_wall_dist
 			* data->ray.ray_dirx;
-	data->texture.wallX -= floor(data->texture.wallX);
+	data->texture.wall_x -= floor(data->texture.wall_x);
 	if (data->ray.side == 1 && data->ray.mapy >= data->y)
 	{
 		data->texture.n_text = 1;
 		data->texture.step = 1.0 * data->img_so.height / data->ray.line_height;
-		data->texture.texX = (int)(data->texture.wallX * data->img_so.width);
+		data->texture.tex_x = (int)(data->texture.wall_x * data->img_so.width);
 	}
 	else if (data->ray.side == 1 && data->ray.mapy < data->y)
 	{
 		data->texture.n_text = 0;
 		data->texture.step = 1.0 * data->img_n.height / data->ray.line_height;
-		data->texture.texX = (int)(data->texture.wallX * data->img_n.width);
+		data->texture.tex_x = (int)(data->texture.wall_x * data->img_n.width);
 	}
 }
 
@@ -103,12 +103,12 @@ void	raycasting5(t_data *data)
 	{
 		data->texture.n_text = 2;
 		data->texture.step = 1.0 * data->img_ea.height / data->ray.line_height;
-		data->texture.texX = (int)(data->texture.wallX * data->img_ea.width);
+		data->texture.tex_x = (int)(data->texture.wall_x * data->img_ea.width);
 	}
 	else if (data->ray.side == 0 && data->ray.mapx < data->x)
 	{
 		data->texture.n_text = 3;
 		data->texture.step = 1.0 * data->img_we.height / data->ray.line_height;
-		data->texture.texX = (int)(data->texture.wallX * data->img_we.width);
+		data->texture.tex_x = (int)(data->texture.wall_x * data->img_we.width);
 	}
 }

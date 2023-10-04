@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:59:23 by mcreus            #+#    #+#             */
-/*   Updated: 2023/10/04 14:42:20 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/04 17:46:15 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,19 @@ void	texture_choice(t_data *data)
 {
 	if (data->texture.n_text == 0)
 	{
-		data->texture.texY = (int)data->texture.texPos
+		data->texture.tex_y = (int)data->texture.tex_pos
 			& (data->img_n.height - 1);
-		data->texture.texPos += data->texture.step;
-		data->texture.color = ((int *)data->img_n.addr)[data->texture.texX
-			+ (data->texture.texY * data->img_n.line_len / sizeof(int))];
+		data->texture.tex_pos += data->texture.step;
+		data->texture.color = ((int *)data->img_n.addr)[data->texture.tex_x
+			+ (data->texture.tex_y * data->img_n.line_len / sizeof(int))];
 	}
 	if (data->texture.n_text == 1)
 	{
-		data->texture.texY = (int)data->texture.texPos
+		data->texture.tex_y = (int)data->texture.tex_pos
 			& (data->img_so.height - 1);
-		data->texture.texPos += data->texture.step;
-		data->texture.color = ((int *)data->img_so.addr)[data->texture.texX
-			+ (data->texture.texY * data->img_so.line_len / sizeof(int))];
+		data->texture.tex_pos += data->texture.step;
+		data->texture.color = ((int *)data->img_so.addr)[data->texture.tex_x
+			+ (data->texture.tex_y * data->img_so.line_len / sizeof(int))];
 	}
 	texture_choice2(data);
 }
@@ -57,19 +57,19 @@ void	texture_choice2(t_data *data)
 {
 	if (data->texture.n_text == 2)
 	{
-		data->texture.texY = (int)data->texture.texPos
+		data->texture.tex_y = (int)data->texture.tex_pos
 			& (data->img_ea.height - 1);
-		data->texture.texPos += data->texture.step;
-		data->texture.color = ((int *)data->img_ea.addr)[data->texture.texX
-			+ (data->texture.texY * data->img_ea.line_len / sizeof(int))];
+		data->texture.tex_pos += data->texture.step;
+		data->texture.color = ((int *)data->img_ea.addr)[data->texture.tex_x
+			+ (data->texture.tex_y * data->img_ea.line_len / sizeof(int))];
 	}
 	if (data->texture.n_text == 3)
 	{
-		data->texture.texY = (int)data->texture.texPos
+		data->texture.tex_y = (int)data->texture.tex_pos
 			& (data->img_we.height - 1);
-		data->texture.texPos += data->texture.step;
-		data->texture.color = ((int *)data->img_we.addr)[data->texture.texX
-			+ (data->texture.texY * data->img_we.line_len / sizeof(int))];
+		data->texture.tex_pos += data->texture.step;
+		data->texture.color = ((int *)data->img_we.addr)[data->texture.tex_x
+			+ (data->texture.tex_y * data->img_we.line_len / sizeof(int))];
 	}
 }
 

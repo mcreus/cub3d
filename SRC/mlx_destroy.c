@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:41:15 by mcreus            #+#    #+#             */
-/*   Updated: 2023/10/04 14:40:52 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/04 17:39:29 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ int	ft_finish(t_data *data)
 		free_error(data, "Fin du jeu\n");
 	exit(0);
 }
-	

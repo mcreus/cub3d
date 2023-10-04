@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:13:47 by aperrein          #+#    #+#             */
-/*   Updated: 2023/02/09 15:19:39 by aperrein         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:22:42 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,4 @@ char	*ft_strrchr(const char *s, int c)
 	else if (a >= 0)
 		return ((char *)(s + a));
 	return (NULL);
-}	
+}

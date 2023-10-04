@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/10/04 14:18:52 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/04 18:03:52 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ typedef struct s_moves
 	double	rotate_speed;
 }	t_moves;
 
-typedef	struct s_text
+typedef struct s_text
 {
 	int		n_text;
 	double	step;
-	int		texX;
-	int		texY;
-	double	texPos;
+	int		tex_x;
+	int		tex_y;
+	double	tex_pos;
 	int		color;
-	double	wallX;
+	double	wall_x;
 }				t_text;
 
 typedef struct s_ray
@@ -146,49 +146,58 @@ typedef struct s_data
 	t_text		texture;
 }				t_data;
 
-int			conf_init(int argc, char *argv[], t_data *data);
-int			check_color(t_color *color);
-int			cub_check(char *s);
-int			empty_line(char *s);
-int			error(char *s);
-int			ft_finish(t_data *data);
-char		**clone(t_data *data);
-void		select_identifier2(t_data *data, char **line);
-void		recup_element(t_data *data, char *s);
+char	**clone(t_data *data);
 
-void		free_error(t_data *data, char *s);
-void		conf_check(t_data *data);
-void		check_map(t_data *data);
-void		free_tab(char **tab);
-void		game_init(t_data *data);
-/*test raytracing*/
-int			mlx_destroy(t_data *data);
-int			handle_input(int keysym, t_data *data);
-int			ft_finish(t_data *data);
-void    ft_draw_texture(t_data *data, int x, int y);
+int		number_rgb(char *s);
+int		three_color(char *s);
+int		in_color_range(int a);
+int		fill_color(t_color *color);
+int		check_color(t_color *color);
+int		element_check(t_data *data);
+int		text_check(t_data *data);
+int		file_check(int argc, char *file);
+int		line_nb(char *s, t_data *data);
+int		conf_init(int argc, char *argv[], t_data *data);
+int		error(char *s);
+int		ft_finish(t_data *data);
+int		handle_input(int keysym, t_data *data);
+int		handle_input_release(int keysym, t_data *data);
+int		view(t_data *data);
+int		cub_check(char *s);
+int		empty_line(char *s);
+
+void	check_init_pos(char c, t_data *data, int j, int i);
+void	check_player(t_data *data);
+void	recur_path(t_data *data, int y, int x);
+void	check_surrounded(t_data *data);
+void	check_map(t_data *data);
+void	select_identifier(t_data *data, char **line);
+void	recup_element(t_data *data, char *s);
+void	conf_check(t_data *data);
+void	conf_fill(char *file, t_data *data);
+void	conf_read(char *s, t_data *data);
+void	free_data(t_data *data);
+void	free_error(t_data *data, char *s);
+void	ft_free_map(t_data *data);
+void	ft_moves_ws(t_data *data);
+void	ft_moves_ad(t_data *data);
+void	ft_rotate1(t_data *data);
+void	ft_rotate2(t_data *data);
+void	init_dir(t_data *data);
+void	init_ray(t_data *data);
+void	img_pix_put(t_img *img, int x, int y, int color);
+void	background(t_data *data);
+void	raycasting(t_data *data);
+void	game_init(t_data *data);
 void	img_init(t_data *data);
-void    textures(t_data *data);
-void    text_addr(t_data *data);
 void	texture_choice(t_data *data);
 void	texture_choice2(t_data *data);
 void	raycasting1(t_data *data);
 void	raycasting2(t_data *data);
+void	raycasting_hit(t_data *data);
 void	raycasting3(t_data *data);
 void	raycasting4(t_data *data);
 void	raycasting5(t_data *data);
-void	raycasting_hit(t_data *data);
-
-/*MOVES*/
-void		ft_moves_ws(t_data *data);
-void		ft_moves_ad(t_data *data);
-void		ft_rotate1(t_data *data);
-void		ft_rotate2(t_data *data);
-void		moves(int nb, t_data *data);
-void		init_ray(t_data *data);
-void		img_init(t_data *data);
-int			handle_input_release(int keysym, t_data *data);
-void		img_init(t_data *data);
-int			ft_path_texture(char *str, char **texture, t_data *data, int j);
-int	get_color(t_img *textures, int x, int y, int n);
+void	free_tab(char **tab);
 
 #endif

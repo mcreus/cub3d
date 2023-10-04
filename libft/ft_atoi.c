@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperrein <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:17:06 by aperrein          #+#    #+#             */
-/*   Updated: 2023/04/27 15:26:30 by aperrein         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:21:31 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_atoi(const char *nptr)
 	int	res;
 	int	s;
 
-	//
 	i = 0;
 	res = 0;
 	s = 1;

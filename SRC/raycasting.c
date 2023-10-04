@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:45:41 by aperrein          #+#    #+#             */
-/*   Updated: 2023/10/04 14:41:29 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/04 17:44:04 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	raycasting(t_data *data)
 		raycasting3(data);
 		raycasting4(data);
 		raycasting5(data);
-		data->texture.texPos = (data->ray.draw_start - HEIGHT / 2
+		data->texture.tex_pos = (data->ray.draw_start - HEIGHT / 2
 				+ data->ray.line_height / 2) * data->texture.step;
 		while (data->ray.draw_start < data->ray.draw_end)
 		{
@@ -114,7 +114,6 @@ void	game_init(t_data *data)
 	mlx_destroy_image(data->mlx, data->img_n.mlx_img);
 	mlx_destroy_image(data->mlx, data->img_so.mlx_img);
 	mlx_destroy_image(data->mlx, data->img_we.mlx_img);
-	//ft_finish(data);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 }
