@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:45:41 by aperrein          #+#    #+#             */
-/*   Updated: 2023/10/03 09:53:31 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/04 11:49:47 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,46 @@ void	background(t_data *data)
 	}
 }
 
-void	test_ray(t_data *data)
+/*
+
+
+
+void	test_ray_2(t_data *data)
 {
 	int		x;
 	int		y;
 	//int		color;
+
+	x = 0;
+	while (x < WIDTH)
+	{
+		int dist_mur = .....
+
+		int yh = ...
+		int yb = ...
+		
+		afficher_ligne_vertical_mur_x(x, yh, yb);
+		x++;
+	}
+}
+
+
+afficher_ligne_vertical_mur_x(int x, int yh, int yb)
+{
+	int y = yh
+	
+	while (y < yb)
+		put_pxl(x, y, red)
+		y++
+}
+*/	
+
+
+void	test_ray(t_data *data)
+{
+	int		x;
+	//int		y;
+	int		color;
 
 	x = 0;
 	while (x < WIDTH)
@@ -137,24 +172,41 @@ void	test_ray(t_data *data)
 		data->ray.draw_end = data->ray.line_height / 2 + HEIGHT / 2;
 		if (data->ray.draw_end >= HEIGHT)
 			data->ray.draw_end = HEIGHT - 1;
-		/*if (data->ray.side == 1 && data->ray.mapy >= data->y)
-			color = 16711680;		//red east
+		//y = data->ray.draw_start - 1;
+		if (data->ray.side == 1 && data->ray.mapy >= data->y)
+			//color = 16711680;		//red east
+			color = get_color(data->textures, data->ray.mapx, data->ray.mapy, 0);
 		else if (data->ray.side == 1 && data->ray.mapy < data->y)
-			color = 65280;			//green west
+			color = get_color(data->textures, data->ray.mapx, data->ray.mapy, 1);
+			//color = 65280;			//green west
 		if (data->ray.side == 0 && data->ray.mapx >= data->x)
-			color = 255;		//blue north
+			color = get_color(data->textures, data->ray.mapx, data->ray.mapy, 2);
+			//color = 255;		//blue north
 		else if (data->ray.side == 0 && data->ray.mapx < data->x)
-			color = 16776960;			//yellow south*/
-		y = 0;
+			color = get_color(data->textures, data->ray.mapx, data->ray.mapy, 3);
+			//color = 16776960;			//yellow south	
+		/*y = 0;
 		if (y <= data->ray.draw_end)
 		{
-			ft_draw_texture(data, x, y);
 			textures(data);
+			ft_draw_texture(data, x, y);
+			y++;
+		}*/
+		while (data->ray.draw_start < data->ray.draw_end)
+		{			
+			img_pix_put(&data->img_f, x, data->ray.draw_start++, color);
 		}
-		//while (data->ray.draw_start < data->ray.draw_end)
-			//img_pix_put(&data->img_f, x, data->ray.draw_start++, color);
+
 		x++;
 	}
+}
+
+int	get_color(t_img *textures, int x, int y, int n)
+{
+	char	*pixel;
+
+	pixel = textures[n].addr + (y * textures[n].line_len) + (x * 4);
+	return (*(unsigned int *)(pixel));
 }
 
 int	view(t_data *data)
@@ -182,6 +234,7 @@ void	game_init(t_data *data)
 	data->img_f.mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img_f.addr = mlx_get_data_addr(data->img_f.mlx_img, &data->img_f.bpp,
 			&data->img_f.line_len, &data->img_f.endian);
+	textures(data);
 	mlx_loop_hook(data->mlx, &view, data);
 	mlx_hook(data->win, DestroyNotify, ButtonPressMask, &ft_finish, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, &handle_input, data);

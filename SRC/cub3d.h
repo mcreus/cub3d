@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/10/02 18:46:44 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/03 18:23:05 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,5 +167,6 @@ void		init_ray(t_data *data);
 int			handle_input_release(int keysym, t_data *data);
 void		img_init(t_data *data);
 int			ft_path_texture(char *str, char **texture, t_data *data, int j);
+int	get_color(t_img *textures, int x, int y, int n);
 
 #endif
