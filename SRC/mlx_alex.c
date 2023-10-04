@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:45:41 by aperrein          #+#    #+#             */
-/*   Updated: 2023/10/02 09:31:12 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/03 09:53:31 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	background(t_data *data)
 void	test_ray(t_data *data)
 {
 	int		x;
-	int		color;
+	int		y;
+	//int		color;
 
 	x = 0;
 	while (x < WIDTH)

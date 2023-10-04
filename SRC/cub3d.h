@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:43:15 by aperrein          #+#    #+#             */
-/*   Updated: 2023/09/29 17:35:48 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/10/02 18:46:44 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_ray
 	double	perp_wall_dist;
 	int		mapx;
 	int		mapy;
+	double	step;
 	int		stepx;
 	int		stepy;
 	int		hit;
@@ -97,16 +98,17 @@ typedef struct s_data
 	int			map_error;
 	int			nbr_player;
 	int			error_wall;
+	int			count;
 	int			no;
 	int			so;
 	int			we;
 	int			ea;
 	int			fl;
 	int			ce;
+	int			rx;
+	int			ry;
 	double		x;
 	double		y;
-	double		pos_x;
-	double		pos_y;
 	double		dir_x;
 	double		dir_y;
 	double		plan_x;
@@ -147,6 +149,11 @@ void		game_init(t_data *data);
 int			mlx_destroy(t_data *data);
 int			handle_input(int keysym, t_data *data);
 int			ft_finish(t_data *data);
+void    ft_draw_texture(t_data *data, int x, int y);
+void	img_init(t_data *data);
+void    textures(t_data *data);
+void    text_addr(t_data *data);
+
 /*MOVES*/
 void		ft_moves_ws(t_data *data);
 void		ft_moves_ad(t_data *data);
@@ -156,5 +163,7 @@ void		moves(int nb, t_data *data);
 void		init_ray(t_data *data);
 void		img_init(t_data *data);
 int			handle_input_release(int keysym, t_data *data);
+void		img_init(t_data *data);
+int			ft_path_texture(char *str, char **texture, t_data *data, int j);
 
 #endif
