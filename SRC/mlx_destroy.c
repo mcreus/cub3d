@@ -27,14 +27,17 @@ void	ft_free_map(t_data *data)
 
 int	ft_finish(t_data *data)
 {
-	mlx_destroy_image(data->mlx, &data->img_ea.mlx_img);
-	mlx_destroy_image(data->mlx, &data->img_n.mlx_img);
-	mlx_destroy_image(data->mlx, &data->img_so.mlx_img);
-	mlx_destroy_image(data->mlx, &data->img_we.mlx_img);
-	mlx_destroy_image(data->mlx, &data->img);
-	ft_free_map(data);
-	mlx_destroy_window(data->mlx, data->win);
+	if (data->win)
+		mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_image(data->mlx, data->img.mlx_img);
+	mlx_destroy_image(data->mlx, data->img_ea.mlx_img);
+	mlx_destroy_image(data->mlx, data->img_n.mlx_img);
+	mlx_destroy_image(data->mlx, data->img_so.mlx_img);
+	mlx_destroy_image(data->mlx, data->img_we.mlx_img);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
+	if (data->file)
+		free_error(data, "Fin du jeu\n");
 	exit(0);
 }
+	

@@ -110,6 +110,11 @@ void	game_init(t_data *data)
 		&handle_input_release, data);
 	mlx_loop(data->mlx);
 	mlx_destroy_image(data->mlx, data->img.mlx_img);
+	mlx_destroy_image(data->mlx, data->img_ea.mlx_img);
+	mlx_destroy_image(data->mlx, data->img_n.mlx_img);
+	mlx_destroy_image(data->mlx, data->img_so.mlx_img);
+	mlx_destroy_image(data->mlx, data->img_we.mlx_img);
+	//ft_finish(data);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 }
